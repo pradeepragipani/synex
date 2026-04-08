@@ -107,7 +107,6 @@ export class ShopV1 {
   }
 
   loadMore(): void {
-    this.products = [];
     if (this.selectedCategory) {
       let products = this.allProducts.filter(product => product.catid === this.selectedCategory);
       this.products = this.products.concat(products.slice(this.products.length, this.products.length + 12));
