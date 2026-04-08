@@ -19,6 +19,10 @@
                     <input
                         class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300"
                         type="text" placeholder="Enter your full name" formControlName="name">
+                    <span class="text-red-500 text-sm" *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+                        <span *ngIf="registerForm.get('name')?.errors?.['required']">Name is required.</span>
+                        <span *ngIf="registerForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters long.</span>
+                    </span>
                 </div>
                 <div class="mt-5" data-aos="fade-up" data-aos-delay="300">
                     <label
@@ -26,6 +30,10 @@
                     <input
                         class="w-full h-12 md:h-14 bg-white dark:bg-transparent border border-bdr-clr focus:border-primary p-4 outline-none duration-300"
                         type="text" placeholder="Enter your Mobile Number" formControlName="cnumber">
+                    <span class="text-red-500 text-sm" *ngIf="registerForm.get('cnumber')?.touched && registerForm.get('cnumber')?.invalid">
+                        <span *ngIf="registerForm.get('cnumber')?.errors?.['required']">Mobile number is required.</span>
+                        <span *ngIf="registerForm.get('cnumber')?.errors?.['pattern']">Mobile number must be a valid 10-digit number.</span>
+                    </span>
                 </div>
                 <div class="mt-5" data-aos="fade-up" data-aos-delay="400">
                     <label
@@ -41,6 +49,9 @@
                             Show
                         </button>
                     </div>
+                    <span class="text-red-500 text-sm" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+                        <span *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</span>
+                    </span>
                 </div>
                 <div class="mt-5" data-aos="fade-up" data-aos-delay="400">
                     <label class="text-base sm:text-lg font-medium leading-none mb-2.5 block dark:text-white">Confirm
@@ -56,6 +67,10 @@
                             Show
                         </button>
                     </div>
+                    <span class="text-red-500 text-sm" *ngIf="registerForm.get('confirmPassword')?.touched && registerForm.get('confirmPassword')?.invalid">
+                        <span *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm password is required.</span>
+                        <span *ngIf="passwordsMismatch()">Passwords do not match.</span>
+                    </span>
                 </div>
                 <div class="mt-7" data-aos="fade-up" data-aos-delay="500">
                     <label class="flex items-center gap-2 iam-agree">

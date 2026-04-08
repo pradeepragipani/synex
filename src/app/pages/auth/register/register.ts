@@ -41,11 +41,17 @@ export class Register {
 
   initForms() {
     this.registerForm = this.fb.group({
-      name: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       cnumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
     });
+  }
+
+  passwordsMismatch(): boolean {
+    const password = this.registerForm.get('password')?.value;
+    const confirmPassword = this.registerForm.get('confirmPassword')?.value;
+    return password && confirmPassword && password !== confirmPassword;
   }
 
   // ---------------- REGISTER ----------------
