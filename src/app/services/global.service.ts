@@ -1,4 +1,5 @@
 import { Injectable, OnInit } from "@angular/core";
+import { ToastrService } from "ngx-toastr";
 import { BehaviorSubject, Observable, Subject } from "rxjs";
 
 @Injectable({
@@ -11,7 +12,9 @@ export class GlobalService {
     private cartItems$: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
     cartItemsObservable: Observable<any[]> = this.cartItems$.asObservable();
 
-    constructor(){
+    constructor(
+        private toastr: ToastrService
+    ){
         const user = localStorage.getItem('user');
         if (user) {
             this.loggedInUser$.next(JSON.parse(user));
@@ -33,6 +36,7 @@ export class GlobalService {
         localStorage.removeItem('defaultAddress');
         localStorage.removeItem('selectedAddress');
         this.loggedInUser$.next(null);
+        window.location.href = '/';
         setTimeout(() => {
             localStorage.removeItem('cartItems');
             this.cartItems$.next([]);
@@ -74,4 +78,18 @@ export class GlobalService {
         localStorage.removeItem('cartItems');
         this.cartItems$.next([]);
     }
+
+    success(msg: string, header?: string): void {
+        this.toastr.success(msg, header || 'Success');
+    }
+    error(msg: string, header?: string): void {
+        this.toastr.error(msg, header || 'Error');
+    }
+    info(msg: string, header?: string): void {
+        this.toastr.info(msg, header || 'Info');
+    }
+    warning(msg: string, header?: string): void {
+        this.toastr.warning(msg, header || 'Warning');
+    }
+
 }

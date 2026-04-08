@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { NavbarOne } from "../../../components/navbar/navbar-one/navbar-one";
 import Aos from 'aos';
@@ -29,6 +29,7 @@ export class Cart {
   cartTotal: number = 0;
 
   constructor(
+    private cdr: ChangeDetectorRef,
     private router: Router,
     private globalService: GlobalService,
   ) { }
@@ -45,6 +46,7 @@ export class Cart {
       this.cartItem = items.length > 0;
       this.cartItems = items;
       this.cartTotal = items.reduce((total, item) => total + (item.scost * item.quantity), 0);
+      this.cdr.detectChanges();
     });
   }
 
@@ -66,10 +68,10 @@ export class Cart {
     if (this.cartItems.length && this.isLoggedIn) {
       this.router.navigate(['/checkout']);
     } else if(this.cartItems.length && !this.isLoggedIn) {
-      alert('Please login to proceed to checkout');
+      this.globalService.error('Please login to proceed to checkout');
       this.router.navigate(['/login']);
     } else {
-      alert('Your cart is empty');
+      this.globalService.error('Your cart is empty');
     }
   }
 }

@@ -42,9 +42,9 @@ export class QrPaymentComponent implements OnInit, OnDestroy {
         setTimeout(() => {
           this.checkTransactionStatus();
         }, 60000);
-      } else {
-        alert("Invalid Payment QR Code");
-        this.router.navigate(['/']);
+      // } else {
+      //   this.globalService.error("Invalid Payment QR Code");
+      //   this.router.navigate(['/']);
       }
     });
   }
@@ -86,7 +86,7 @@ export class QrPaymentComponent implements OnInit, OnDestroy {
     };
     this.apiService.postData('/getTransactionStatus', data).subscribe((res: any) => {
       if (res && res.code === 0) {
-        alert(res.message); // replace with toastr
+        this.globalService.error(res.message); // replace with toastr
         this.router.navigate(['/']);
       } else {
         this.router.navigate(['/']);

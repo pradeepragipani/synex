@@ -57,15 +57,16 @@ export class ProductDetails {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       window.scrollTo(0, 0);
-      this.globalService.cartItemsObservable.subscribe(items => {
-        const itemInCart = items.find((item: any) => item.id === this.data?.id);
-        this.isCardAdded = !!itemInCart;
-      });
       this.id = params['id'];
       this.id = this.route.snapshot.params['id'];
       // this.data = productList.find(item => item.id === parseInt(this.id))
       this.data = localStorage.getItem('productData') ? JSON.parse(localStorage.getItem('productData')!) : null;
       this.relatedProducts = localStorage.getItem('relatedProducts') ? JSON.parse(localStorage.getItem('relatedProducts')!) : [];
+      this.globalService.cartItemsObservable.subscribe(items => {
+        const itemInCart = items.find((item: any) => item.id === this.data?.id);
+        this.isCardAdded = !!itemInCart;
+        this.data.quantity = itemInCart ? itemInCart.quantity : 0;
+      });
       this.cdr.detectChanges();
       setInterval(() => {
         this.calculateTime();

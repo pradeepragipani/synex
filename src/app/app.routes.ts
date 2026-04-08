@@ -49,6 +49,7 @@ import { BlogTag } from './pages/blog/blog-tag/blog-tag';
 import { Contact } from './pages/inner-pages/contact/contact';
 import { ProductCategory } from './pages/shop/product-category/product-category';
 import { QrPaymentComponent } from './pages/shop/qr-payment/qr-payment.component';
+import { AddressComponent } from './pages/profile/address/address.component';
 
 export const routes: Routes = [
     {path:'', redirectTo:'home', pathMatch:'full'},
@@ -111,4 +112,5 @@ export const routes: Routes = [
     {path:'contact', component:Contact},
     {path:'product-category', component:ProductCategory},
     {path: 'qr-payment', component: QrPaymentComponent },
+    {path: 'address', component: AddressComponent },
 ];

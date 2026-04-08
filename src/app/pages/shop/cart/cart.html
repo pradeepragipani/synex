@@ -44,7 +44,7 @@
                                 </div>
                             </td>
                             <td>
-                                <h6 class="text-base md:text-lg leading-none text-title dark:text-white font-semibold">${{ item.scost | currency:'INR' }}</h6>
+                                <h6 class="text-base md:text-lg leading-none text-title dark:text-white font-semibold">{{ item.scost | currency:'INR' }}</h6>
                             </td>
                             <td>
                                 <div class="inc-dec flex items-center gap-2">
@@ -68,7 +68,7 @@
                                 </div>
                             </td>
                             <td>
-                                <h6 class="text-base md:text-lg leading-none text-title dark:text-white font-semibold">${{ (item.scost * item.quantity) | currency:'INR' }}</h6>
+                                <h6 class="text-base md:text-lg leading-none text-title dark:text-white font-semibold">{{ (item.scost * item.quantity) | currency:'INR' }}</h6>
                             </td>
                             <td>
                                 <button (click)="removeFromCart(item)" class="w-8 h-8 bg-[#E8E9EA] dark:bg-dark-secondary flex items-center justify-center ml-auto duration-300 text-title dark:text-white">

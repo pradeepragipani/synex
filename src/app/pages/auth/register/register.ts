@@ -7,6 +7,7 @@ import { FooterOne } from "../../../components/footer/footer-one/footer-one";
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EncryptDecryptService } from '../../../services/encrypt-decrypt.service';
 import { ApiService } from '../../../services/api.service';
+import { GlobalService } from '../../../services/global.service';
 
 @Component({
   selector: 'app-register',
@@ -30,6 +31,7 @@ export class Register {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private globalService: GlobalService,
     private apiService: ApiService,
     private encryptService: EncryptDecryptService,
   ) { }
@@ -68,15 +70,15 @@ export class Register {
       next: (res: any) => {
         this.isLoading = false;
         if (res.code === 0) {
-          alert(res.message);
+          this.globalService.success(res.message);
           this.registerForm.reset();
           this.router.navigate(['/login']);
         } else {
-          alert(res.message);
+          this.globalService.error(res.message);
         }
       }, error: (err) => {
         this.isLoading = false;
-        alert('An error occurred. Please try again.');
+        this.globalService.error('An error occurred. Please try again.');
         console.error('Registration error:', err);
       }, complete: () => {
         this.isLoading = false;

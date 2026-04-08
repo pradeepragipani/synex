@@ -6,6 +6,7 @@ import { AccountTab } from "../../../components/account-tab/account-tab";
 import Aos from 'aos';
 import { cartData } from '../../../data/data';
 import { FooterOne } from "../../../components/footer/footer-one/footer-one";
+import { FormsModule } from '@angular/forms';
 
 interface CartData{
     image: string;
@@ -19,6 +20,7 @@ interface CartData{
   selector: 'app-my-account',
   imports: [
     CommonModule,
+    FormsModule,
     RouterLink,
     NavbarOne,
     AccountTab,
@@ -28,6 +30,8 @@ interface CartData{
   styleUrl: './my-account.css'
 })
 export class MyAccount {
+
+  user: any = JSON.parse(localStorage.getItem('user') || '{}');
 
   ngAfterViewInit(): void {
     Aos.init()

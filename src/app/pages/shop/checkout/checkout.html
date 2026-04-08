@@ -31,7 +31,96 @@
                     </div>
                 </div> -->
 
-                <h4 class="font-semibold leading-none text-xl md:text-2xl mb-6 md:mb-[30px]">Address</h4>
+                <div class="flex items-center justify-between mb-6 md:mb-[30px] relative">
+                    <h4 class="font-semibold leading-none text-xl md:text-2xl">Address</h4>
+                    <button type="button" class="btn btn-sm btn-theme-solid" (click)="toggleAddAddressPopup()" data-text="Add Address">
+                        <span>Add Address</span>
+                    </button>
+                    <div *ngIf="showAddAddressPopup"
+                        class="add-address-popup absolute top-full right-0 z-20 mt-3 w-full max-w-[520px] p-5 bg-white dark:bg-dark-secondary border border-[#E3E5E6] rounded-xl shadow-lg">
+                        <div class="flex items-center justify-between mb-4">
+                            <h5 class="font-semibold text-lg">Add New Address</h5>
+                            <button type="button" class="text-title hover:text-primary" (click)="closeAddAddressPopup()">Close</button>
+                        </div>
+                        <div class="grid gap-4" [formGroup]="addressForm">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Address Line 1</label>
+                                <input type="text"
+                                    class="w-full h-12 bg-white dark:bg-dark-secondary border border-[#E3E5E6] p-3 outline-none"
+                                    formControlName="address1" placeholder="Address line 1" />
+                                <span class="text-red-500 text-sm"
+                                    *ngIf="addressForm.get('address1')?.touched && addressForm.get('address1')?.invalid">
+                                    <span *ngIf="addressForm.get('address1')?.errors?.['required']">Address Line 1 is required.</span>
+                                </span>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Address Line 2</label>
+                                <input type="text"
+                                    class="w-full h-12 bg-white dark:bg-dark-secondary border border-[#E3E5E6] p-3 outline-none"
+                                    formControlName="address2" placeholder="Address line 2" />
+                                    <span class="text-red-500 text-sm"
+                                    *ngIf="addressForm.get('address2')?.touched && addressForm.get('address2')?.invalid">
+                                    <span *ngIf="addressForm.get('address2')?.errors?.['required']">Address Line 2 is required.</span>
+                                </span>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Village</label>
+                                    <input type="text"
+                                        class="w-full h-12 bg-white dark:bg-dark-secondary border border-[#E3E5E6] p-3 outline-none"
+                                        formControlName="village" placeholder="Village" />
+                                        <span class="text-red-500 text-sm"
+                                    *ngIf="addressForm.get('village')?.touched && addressForm.get('village')?.invalid">
+                                    <span *ngIf="addressForm.get('village')?.errors?.['required']">Village is required.</span>
+                                </span>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">City</label>
+                                    <input type="text"
+                                        class="w-full h-12 bg-white dark:bg-dark-secondary border border-[#E3E5E6] p-3 outline-none"
+                                        formControlName="city" placeholder="City" />
+                                        <span class="text-red-500 text-sm"
+                                    *ngIf="addressForm.get('city')?.touched && addressForm.get('city')?.invalid">
+                                    <span *ngIf="addressForm.get('city')?.errors?.['required']">City is required.</span>
+                                </span>
+                                </div>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">State</label>
+                                    <select formControlName="state"
+                                        class="w-full nice-select select-active !bg-white dark:!bg-dark-secondary">
+                                        <option value="">Select State</option>
+                                        <option *ngFor="let state of statesList" [value]="state.statename">{{state.statename}}</option>
+                                    </select>
+                                    <span class="text-red-500 text-sm"
+                                    *ngIf="addressForm.get('pincode')?.touched && addressForm.get('pincode')?.invalid">
+                                    <span *ngIf="addressForm.get('pincode')?.errors?.['required']">State is required.</span>
+                                </span>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-2">Pincode</label>
+                                    <input type="text"
+                                        class="w-full h-12 bg-white dark:bg-dark-secondary border border-[#E3E5E6] p-3 outline-none"
+                                        formControlName="pincode" placeholder="Pincode" />
+                                        <span class="text-red-500 text-sm"
+                                    *ngIf="addressForm.get('pincode')?.touched && addressForm.get('pincode')?.invalid">
+                                    <span *ngIf="addressForm.get('pincode')?.errors?.['required']">Pincode is required.</span>
+                                </span>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 flex-wrap justify-end">
+                                <button type="button" class="btn btn-outline" (click)="closeAddAddressPopup()"
+                                    data-text="Cancel"><span>Cancel</span></button>
+                                <button type="button" class="btn btn-theme-solid" (click)="saveAddress()" [attr.data-text]="isAddressLoading ? 'Saving Address' : 'Save Address'"
+                                    [disabled]="isAddressLoading">
+                                    <span *ngIf="!isAddressLoading">Save Address</span>
+                                    <span *ngIf="isAddressLoading">Saving Address</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="loader-wrapper" *ngIf="isLoading">
                     <span class="loader"></span>
                 </div>
@@ -48,7 +137,7 @@
                             </div>
                             
                             <div class="mt-4 md:mt-6 flex flex-wrap gap-3">
-                                <button class="btn btn-outline" data-text="Selected" [disabled]="isAddressSelected(item)" *ngIf="isSelected(item)" >
+                                <button class="btn btn-theme-solid" data-text="Selected" [disabled]="isAddressSelected(item)" *ngIf="isSelected(item)" >
                                     <span>Selected</span>
                                 </button>
                                 <button class="btn btn-outline" data-text="Select" (click)="selectAddress(item)" *ngIf="!isSelected(item)" >
@@ -249,8 +338,8 @@
                             [routerLink]="'/cart'" class="btn btn-outline" data-text="Back to Cart">
                             <span>Back to Cart</span>
                         </button>
-                        <button (click)="handleOrder()" [disabled]="checkoutDisable || isLoading" class="btn btn-theme-solid" [attr.data-text]="checkoutDisable ? 'Loading...' : 'Place to Order'">
-                            <span *ngIf="!checkoutDisable">Place to Order</span>
+                        <button (click)="handleOrder()" [disabled]="checkoutDisable || isLoading" class="btn btn-theme-solid" [attr.data-text]="checkoutDisable ? 'Loading...' : 'Place Order'">
+                            <span *ngIf="!checkoutDisable">Place Order</span>
                             <span *ngIf="checkoutDisable">Loading...</span>
                         </button>
                     </div>

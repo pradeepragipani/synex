@@ -62,6 +62,7 @@ export class Login {
       next: (res: any) => {
         this.isLoading = false;
         if (res.code === 0) {
+          this.globalService.success(res.message);
           const userData = res.response[0];
 
           localStorage.setItem("Tokenid", this.encryptService.set(userData.tokenid));
@@ -126,11 +127,11 @@ export class Login {
         } else if (res.code === 4) {
           // this.store.showModal('otp');
         } else {
-          alert(res.message);
+          this.globalService.error(res.message);
         }
       }, error: (error: any) => {
         this.isLoading = false;
-        alert('An error occurred. Please try again.');
+        this.globalService.error('An error occurred. Please try again.');
       },
       complete: () => {
         this.isLoading = false;

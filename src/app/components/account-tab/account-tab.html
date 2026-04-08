@@ -1,20 +1,23 @@
 <ul class="divide-y dark:divide-paragraph text-title dark:text-white text-base sm:text-lg lg:text-xl flex flex-col justify-center leading-none">
-    <li class="pb-3 lg:pb-6 pl-6 lg:pl-12" [ngClass]="current === '/my-profile' ? 'active text-primary' : '' ">
+    <!-- <li class="pb-3 lg:pb-6 pl-6 lg:pl-12" [ngClass]="current === '/my-profile' ? 'active text-primary' : '' ">
         <a class="duration-300 hover:text-primary" [routerLink]="'/my-profile'">My Profile</a>
-    </li>
+    </li> -->
     <li class="py-3 lg:py-6 pl-6 lg:pl-12" [ngClass]="current === '/my-account' ? 'active text-primary' : '' ">
         <a class="duration-300 hover:text-primary" [routerLink]="'/my-account'">My Account</a>
     </li>
-    <li class="py-3 lg:py-6 pl-6 lg:pl-12" [ngClass]="current === '/edit-account' ? 'active text-primary' : '' ">
+    <!-- <li class="py-3 lg:py-6 pl-6 lg:pl-12" [ngClass]="current === '/edit-account' ? 'active text-primary' : '' ">
         <a class="duration-300 hover:text-primary" [routerLink]="'/edit-account'">Edit Account</a>
-    </li>
+    </li> -->
     <li class="py-3 lg:py-6 pl-6 lg:pl-12" [ngClass]="current === '/order-history' ? 'active text-primary' : '' ">
         <a class="duration-300 hover:text-primary" [routerLink]="'/order-history'">Order History</a>
     </li>
-    <li class="py-3 lg:py-6 pl-6 lg:pl-12" [ngClass]="current === '/wishlist' ? 'active text-primary' : '' ">
+    <!-- <li class="py-3 lg:py-6 pl-6 lg:pl-12" [ngClass]="current === '/wishlist' ? 'active text-primary' : '' ">
         <a class="duration-300 hover:text-primary" [routerLink]="'/wishlist'">Wishlist</a>
+    </li> -->
+    <li class="py-3 lg:py-6 pl-6 lg:pl-12" [ngClass]="current === '/address' ? 'active text-primary' : '' ">
+        <a class="duration-300 hover:text-primary" [routerLink]="'/address'">Address</a>
     </li>
     <li class="pt-3 lg:pt-6 pl-6 lg:pl-12" [ngClass]="current === '/login' ? 'active text-primary' : '' ">
-        <a class="duration-300 hover:text-primary" [routerLink]="'/login'">Logout</a>
+        <a class="duration-300 hover:text-primary" (click)="logout()">Logout</a>
     </li>
 </ul>
