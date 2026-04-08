@@ -1,4 +1,4 @@
- <div class="relative bg-overlay before:bg-title before:bg-opacity-95" style="background-image: url('assets/img/bg/footer.jpg');">
+ <div class="relative bg-overlay before:bg-title before:bg-opacity-95" style="background-image: url('assets/img/bg/footer.png');">
     <div class="s-pt-100">
         <div class="container-fluid">
             <!-- <div class="max-w-lg lg:max-w-[1052px] mx-auto flex items-end justify-between gap-3 lg:gap-8 flex-col lg:flex-row s-pb-100">
@@ -16,7 +16,7 @@
 
                 <div class="lg:max-w-[522px] w-full sm:text-center -order-1 lg:order-none" *ngIf="apiData">
                     <!-- <img class="sm:mx-auto w-[150px] sm:w-auto" [src]="'assets/img/footer-logo.svg'" alt="logo"> -->
-                    <img class="sm:mx-auto w-[150px] sm:w-auto" [src]="'assets/img/custom/Synex.png'" alt="logo" style="width: 50px;">
+                    <!-- <img class="sm:mx-auto w-[150px] sm:w-auto" [src]="'assets/img/custom/Synex.png'" alt="logo" style="width: 50px;"> -->
                     <p class="mt-[15px] text-white">{{apiData.companyname}}</p>
                     <p class="mt-[15px] text-white" [innerHTML]="apiData.address"></p>
                     <p class="mt-[15px] text-white">Mobile: {{apiData.contactnumber}}</p>
@@ -42,7 +42,9 @@
                 <div class="lg:max-w-[366px] sm:w-[45%] lg:w-full flex items-start justify-between gap-10 footer-inner-wrapper">
                     <div>
                         <ul class="text-white leading-none flex flex-col gap-4">
-                            <li *ngFor="let item of footerLink" class="duration-100 hover:text-primary inline-block group"><a class="text-underline-primary" [routerLink]="item.link">{{item.name}}</a></li>
+                            <li *ngFor="let item of footerLink" class="duration-100 hover:text-primary inline-block group">
+                                <a class="text-underline-primary" [routerLink]="item.link" [queryParams]="{ load: item.param }">{{item.name}}</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

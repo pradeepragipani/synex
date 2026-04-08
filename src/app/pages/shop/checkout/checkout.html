@@ -32,6 +32,9 @@
                 </div> -->
 
                 <h4 class="font-semibold leading-none text-xl md:text-2xl mb-6 md:mb-[30px]">Address</h4>
+                <div class="loader-wrapper" *ngIf="isLoading">
+                    <span class="loader"></span>
+                </div>
                 <div class="grid gap-5 mg:gap-6">
                         <div class="flex items-center justify-between gap-5 border border-[#17243026] border-opacity-15 rounded-xl p-4" *ngFor="let item of addresses">
                             <div class="flex items-center gap-3 md:gap-4 lg:gap-6 cart-product flex-wrap">
@@ -199,20 +202,8 @@
                 </div> 
                 <div class="mt-7 md:mt-12">
                     <h4 class="font-semibold leading-none text-xl md:text-2xl mb-6 md:mb-10">Payment Method</h4>
-                    <div class="flex gap-5 sm:gap-8 md:gap-12 flex-wrap">
+                    <!-- <div class="flex gap-5 sm:gap-8 md:gap-12 flex-wrap">
                         <div>
-                            <label class="flex items-center gap-[10px] categoryies-iteem">
-                                <input class="appearance-none hidden" type="radio" name="item-type">
-                                <span class="w-4 h-4 rounded-full border border-title dark:border-white flex items-center justify-center duration-300">
-                                    <svg class="duration-300 opacity-0" width="8" height="8" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="10" height="10" rx="5" fill="#BB976D"/>
-                                    </svg>
-                                </span>
-                                <span class="sm:text-lg text-title dark:text-white block sm:leading-none transform translate-y-[3px] select-none">Cash On Delivery</span>
-                            </label>
-                            <p class="ml-6 text-[15px] leading-none mt-2">Time ( 07 - 10 ) Days</p>
-                        </div>
-                        <!-- <div>
                             <label class="flex items-center gap-[10px] categoryies-iteem">
                                 <input class="appearance-none hidden" type="radio" name="item-type">
                                 <span class="w-4 h-4 rounded-full border border-title dark:border-white flex items-center justify-center duration-300">
@@ -235,8 +226,8 @@
                                 <span class="sm:text-lg text-title dark:text-white block sm:leading-none transform translate-y-[3px] select-none">Debit / Credit Card</span>
                             </label>
                             <p class="ml-6 text-[15px] leading-none mt-2">Time ( 07 - 10 ) Days</p>
-                        </div> -->
-                    </div>
+                        </div>
+                    </div> -->
                     <!-- <div class="mt-6 sm:mt-8 md:mt-10">
                         <label class="flex items-center gap-2 iam-agree">
                             <input class="appearance-none hidden" type="checkbox" name="categories">
@@ -253,7 +244,7 @@
                             [routerLink]="'/cart'" class="btn btn-outline" data-text="Back to Cart">
                             <span>Back to Cart</span>
                         </button>
-                        <button (click)="handleOrder()" [disabled]="checkoutDisable" class="btn btn-theme-solid" [attr.data-text]="checkoutDisable ? 'Loading...' : 'Place to Order'">
+                        <button (click)="handleOrder()" [disabled]="checkoutDisable || isLoading" class="btn btn-theme-solid" [attr.data-text]="checkoutDisable ? 'Loading...' : 'Place to Order'">
                             <span *ngIf="!checkoutDisable">Place to Order</span>
                             <span *ngIf="checkoutDisable">Loading...</span>
                         </button>

@@ -63,19 +63,25 @@ export const cartList = [
 export const footerLink = [
     {
         name: 'Terms of Use',
-        link: '/terms-and-conditions?load=terms-of-use'
+        link: '/terms-and-conditions',
+        param: 'terms-of-use'
     },
     {
         name: 'Privacy Policy',
-        link: '/terms-and-conditions?load=privacy-policy'
+        link: '/terms-and-conditions',
+        param: 'privacy-policy'
+
     },
     {
         name: 'Return & Replace Policy',
-        link: '/terms-and-conditions?load=return-and-replace-policy'
+        link: '/terms-and-conditions',
+        param: 'return-and-replace-policy'
+
     },
     {
         name: 'Cancellation Policy',
-        link: '/terms-and-conditions?load=cancellation-policy'
+        link: '/terms-and-conditions',
+        param: 'cancellation-policy'
     },
     {
         name: 'Contact',

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { NavbarOne } from "../../../components/navbar/navbar-one/navbar-one";
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import Aos from 'aos';
@@ -25,6 +25,7 @@ export class TermsAndConditions {
   apiData: any;
 
   constructor(
+    private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
     private apiService: ApiService
   ) { }
@@ -42,7 +43,9 @@ export class TermsAndConditions {
   loadApiData(): void {
     this.apiService.postData('getmasterdata', { "orgid": "0", "hflag": "S" }).subscribe({
       next: (data) => {
+        window.scrollTo(0, 0);
         this.apiData = data.response[0];
+        this.cdr.detectChanges();
       },
       error: (error) => {
         console.error('Error loading API data', error);

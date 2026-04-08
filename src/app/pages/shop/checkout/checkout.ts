@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { NavbarOne } from "../../../components/navbar/navbar-one/navbar-one";
 import Aos from 'aos';
@@ -25,6 +25,7 @@ export class Checkout {
 
   showCoupon: boolean = false;
 
+  isLoading: boolean = false;
   checkoutDisable: boolean = false;
   user: any = JSON.parse(localStorage.getItem('user') || '{}');
   userData: any = JSON.parse(localStorage.getItem('userLoginData') || '{}');
@@ -41,6 +42,7 @@ export class Checkout {
   orderId: string = '';
 
   constructor(
+    private cdr: ChangeDetectorRef,
     private router: Router,
     private globalService: GlobalService,
     private apiService: ApiService,
@@ -67,6 +69,7 @@ export class Checkout {
   }
 
   getAddress(): void {
+    this.isLoading = true;
     if (!this.userData || !this.userData.id) return;
     this.apiService.postDataWithHeaders(
       '/getUserAddress',
@@ -76,11 +79,20 @@ export class Checkout {
         Tokenid: this.encryptService.set(this.userData.tokenid),
         Sessionid: this.userData.sessionid,
       }
-    ).subscribe((response: any) => {
-      if (response.code === 0) {
-        const addresses = response.response.reverse();
-        this.addresses = addresses;
-        this.selectedAddress = addresses.find((a: any) => a.isdefault === "1") || null;
+    ).subscribe({
+      next: (response: any) => {
+        this.isLoading = false;
+        if (response.code === 0) {
+          const addresses = response.response.reverse();
+          this.addresses = addresses;
+          this.selectedAddress = addresses.find((a: any) => a.isdefault === "1") || null;
+          this.cdr.detectChanges();
+        }
+      }, error: (error) => {
+        this.isLoading = false;
+        console.error('Error loading addresses', error);
+      }, complete: () => {
+        this.isLoading = false;
       }
     });
   }
