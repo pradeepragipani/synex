@@ -1,0 +1,91 @@
+<app-navbar-one />
+
+<div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70"
+    style="background-image:url('assets/img/shortcode/breadcumb.jpg');">
+    <div class="text-center w-full">
+        <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Terms & Conditions</h2>
+        <ul
+            class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
+            <li><a [routerLink]="'/'">Home</a></li>
+            <li>/</li>
+            <li class="text-primary">Terms & Conditions</li>
+        </ul>
+    </div>
+</div>
+
+<div class="s-py-100">
+    <div class="container">
+        <div class="max-w-[940px] mx-auto" data-aos="fade-up" *ngIf="apiData">
+            <article
+                class="prose prose-h3:!text-3xl prose-h4:!text-2xl sm:prose-lg dark:prose-p:text-white-light dark:prose-li:text-white-light max-w-full prose-li:list-none prose-li:before:relative prose-li:before:content-[url('assets/img/icon/check.svg')] prose-ol:!pl-0 sm:prose-ol:!pl-0 prose-ul:pl-0 sm:prose-ul:pl-0 prose-li:flex prose-li:items-start prose-li:gap-2">
+                <!-- <h3 class="pb-3">For Shipping</h3>
+                <p class="pb-4 leading-[30px]">We strive to ensure timely delivery of your orders. Shipping times may vary based on your location and the selected delivery option. Please review our shipping policies for details on processing times, charges, and tracking updates. Contact us for any shipping-related inquiries or assistance." </p>
+                <h3 class="pb-3">For Return</h3>
+                <p class="pb-4 leading-[30px]">We offer a hassle-free process to ensure your satisfaction. Please review our return policy for eligibility and steps to initiate a return. we offer a hassle-free process to ensure your satisfaction. Please review our return policy for eligibility and steps to initiate a return. </p>
+                <h3 class="pb-3">Payment</h3>
+                <p class="pb-4 leading-[30px]">We offer secure and flexible options to suit your needs. Choose from multiple methods, including credit cards, debit cards, and online payment gateways. All transactions are encrypted to ensure your information remains safe. For any payment-related concerns, our support team is here to assist. </p>
+                <h3 class="pb-3">Warranty & Support Services</h3>
+                <p class="pb-4 leading-[30px]">We provide comprehensive warranty and support services to ensure your satisfaction and peace of mind. Our warranty covers eligible products against defects, ensuring quality and reliability. Additionally, our dedicated support team is available to assist you with any inquiries or technical issues. Whether you need guidance or a solution, we are here to help every step of the way. </p>
+                <ul class="pb-3">
+                    <li class="mb-1">All the Lorem Ipsum generators on the Internet tend to repeat predefined on the Internet.</li>
+                    <li class="mb-1">Nibh purus integer elementum in tellus vulputate habitasse</li>
+                    <li class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                    <li class="mb-1">Generators on the Internet tend to repeat predefined good quality furniture.</li>
+                </ul> -->
+                <div *ngIf="load === 'terms-of-use'">
+                    <p class="pb-4 leading-[30px]" [innerHTML]="apiData.terms || 'Terms and conditions not available.'"></p>
+                </div>
+                <div *ngIf="load === 'cancellation-policy'">
+                    <h3 class="pb-3">Cancellation Policy</h3>
+                    <p class="pb-4 leading-[30px]"
+                        [innerHTML]="apiData.cancellation || 'Cancellation policy not available.'"></p>
+                </div>
+                <div *ngIf="load === 'privacy-policy'">
+                    <h3 class="pb-3">Privacy Policy</h3>
+                    <p class="pb-4 leading-[30px]"
+                        [innerHTML]="apiData.privacy || 'Privacy policy not available.'"></p>
+                </div>
+                <div *ngIf="load === 'return-and-replace-policy'">
+                    <h3 class="pb-3">Return & Replacement Policy</h3>
+                    <p class="pb-4 leading-[30px]">
+                        We certainly accept return and also replace of products/items except that they should fall under the
+                        policy terms and conditions. <br /> <br />
+                        <b>Returns : </b><br />
+                        Any product can be return or the entire order can be returned if received in a physically damaged
+                        condition. A valid proof of video footage has to be submitted to the website user account and/or to
+                        the customer support team before unpacking the order.<br /><br />
+                        Any product can be returned if found damaged internally by means of worms, fungus, dust, dirt, odor.
+                        A valid proof to be submitted in the website user account and/or with the customer support
+                        showcasing the product damage.<br /><br />
+                        Once product reaches us we send the same to lab for testing to verify if the product is sold from
+                        us. This is just to avoid any kind of illegal filling of other material in our company pouches. If
+                        found the material is not our product, legal proceedings will follow.<br /><br />
+                        Return policy is applicable if the products are placed in the environment and packing that supports
+                        them. Individual products has instructions on packing and storage conditions.<br /><br />
+                        Refund for the returned products will be honored to the same account from which the transaction is
+                        made or customer support may request to give details of any other way of transfer.<br /><br />
+                        Refunds will be honored in 2-3 business working days. <br /><br />
+                        <b>Replace : </b><br />
+                        Any product or the entire order can be replaced if received in a physically damaged condition. A
+                        valid proof of video footage has to be submitted to the website user account and/or to the customer
+                        support team before unpacking the order.<br /><br />
+                        Any product can be replaced if found damaged internally by means of worms, fungus, dust, dirt, odor.
+                        A valid proof to be submitted in the website user account and/or with the customer support
+                        showcasing the product damage.<br /><br />
+                        Once product reaches us we send the same to lab for testing to verify if the product is sold from
+                        us. This is just to avoid any kind of illegal filling of other material in our company pouches. If
+                        found the material is not our product, legal proceedings will follow.<br /><br />
+                        Replacement policy is applicable if the products are placed in the environment and packing that
+                        supports them. Individual products has instructions on packing and storage conditions.<br /><br />
+                        Refund for the replacement products is not applicable.<br /><br />
+                        Replacement is the same process as new order except there is will be no delivery
+                        charges.<br /><br />
+                    </p>
+                </div>
+
+            </article>
+        </div>
+    </div>
+</div>
+
+<app-footer-one />

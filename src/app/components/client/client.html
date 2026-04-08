@@ -1,0 +1,30 @@
+<div class="relative lg:px-14 max-w-[1024px] mx-auto" data-aos="fade-up" data-aos-delay="100">
+    <owl-carousel-o #owlCarousel [options]="customOptions" class="carousel-slider-two owl-carousel block">
+        <ng-container *ngFor="let item of teamData">
+          <ng-template carouselSlide class="text-center">
+            <div class="max-w-3xl mx-auto">
+                <h6 class="dark:text-white italic font-normal text-center">{{item.desc}}</h6>
+                <div class="flex items-center justify-center gap-3 mt-6 author">
+                    <div class="w-11 h-11 rounded-full overflow-hidden p-1 bg-primary-midum">
+                        <img class="rounded-full" [src]="item.image" alt="testimonial">
+                    </div>
+                    <div class="text-left">
+                        <h5 class="dark:text-white font-medium leading-none">{{item.name}}</h5>
+                        <span class="block text-[14px] leading-none text-[#85A3B4] mt-[5px]">{{item.location}}</span>
+                    </div>
+                </div>
+            </div>
+          </ng-template>
+        </ng-container>
+    </owl-carousel-o>
+    <div class=" lg:absolute lg:top-2/4 lg:left-0 transform lg:-translate-y-2/4 mt-6 xl:mt-0 w-full">
+        <div class="flex gap-2 md:gap-4 justify-center lg:justify-between">
+            <button (click)="prevSlide()" class="crslSlider02_prev w-9 md:w-11 h-9 md:h-11 border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-title dark:hover:text-white hover:border-transparent transition-all duration-300">
+                <span class="lnr lnr-arrow-left"></span>
+            </button>
+            <button (click)="nextSlide()" class="crslSlider02_next w-9 md:w-11 h-9 md:h-11 border border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-title dark:hover:text-white hover:border-transparent transition-all duration-300">
+                <span class="lnr lnr-arrow-right"></span>
+            </button>
+        </div>
+    </div>
+</div>

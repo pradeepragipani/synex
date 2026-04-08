@@ -1,0 +1,177 @@
+<div class="flex items-center gap-4 sm:gap-6">
+    <a *ngIf="!isLoggedIn" [routerLink]="'/login'"
+        class="text-lg leading-none text-title dark:text-white transition-all duration-300 hover:text-primary hidden lg:block">
+        Login
+    </a>
+    <a *ngIf="isLoggedIn" (click)="logout()"
+        class="text-lg leading-none text-title dark:text-white transition-all duration-300 hover:text-primary hidden lg:block">
+        Logout
+    </a>
+    <!-- <button (click)="search = !search" class="hdr_search_btn" aria-label="search">
+        <i class="mdi mdi-magnify text-title dark:text-white text-[24px] sm:text-[28px]"></i>
+    </button>
+    <div (clickOutside)="onClickedOutside($event)">
+        <button class="relative hdr_wishList_btn" (click)="wishItem = !wishItem">
+            <span class="absolute w-[22px] h-[22px] bg-secondary -top-[0px] -right-[11px] rounded-full flex items-center justify-center text-xs leading-none text-white">14</span>
+            <span class="mdi mdi-cards-heart-outline text-title dark:text-white text-[24px] sm:text-[28px]"></span>
+        </button>
+        <div class="wishlist_popup w-80 md:w-96 absolute z-50 top-full right-0 sm:right-20 xl:right-11 bg-white dark:bg-title py-5 md:py-[30px] pl-5 md:pl-[30px] pr-[10px] md:pr-[15px] border border-primary" [ngClass]="wishItem ? 'block' : 'hidden'">
+            <h4 class="font-medium leading-none dark:text-white mb-4 text-xl md:text-2xl">Wishlist</h4>
+            <div>
+                <div class="pr-4 md:pr-5 wishlist-item">
+                    <a *ngFor="let item of wishListData" [routerLink]="'/product-details'" class="flex items-center gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk">
+                        <img class="w-[70px] md:w-auto" [src]="item.image" alt="wishlist">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[14px] md:text-[15px] leading-none block">{{item.name}}</span>
+                                <span class="w-[6px] h-[6px] rounded-full bg-primary"></span>
+                                <span class="text-[14px] md:text-[15px] leading-none block">{{item.price}}</span>
+                            </div>
+                            <h6 class="text-base md:text-lg font-semibold leading-none mt-3">{{item.desc}}</h6>
+                        </div>
+                        <div class="wishList_item_close absolute top-0 right-0 w-6 h-6 flex items-center justify-center bg-title dark:bg-white bg-opacity-10 dark:bg-opacity-10 group duration-300 hover:bg-primary dark:hover:bg-primary">
+                            <svg class="fill-current text-title dark:text-white duration-300 group-hover:text-white" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.636719 1.56306L1.56306 0.636719L4.98839 4.06204L8.41371 0.636719L9.31851 1.54152L5.89319 4.96685L9.3616 8.43526L8.43526 9.3616L4.96685 5.89319L1.54152 9.31851L0.636719 8.41371L4.06204 4.98839L0.636719 1.56306Z"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+                <div class="mt-6 md:mt-10">
+                <a [routerLink]="'/wishlist'" class="btn btn-outline btn-sm w-full" data-text="View All Wishlist">
+                        <span>View All Wishlist</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div (clickOutside)="onClickedOutside2($event)">
+        <button class="relative hdr_cart_btn" (click)="cartItem = !cartItem">
+            <span
+                class="absolute w-[22px] h-[22px] bg-secondary -top-[0px] -right-[11px] rounded-full flex items-center justify-center text-xs leading-none text-white">{{cartItems.length}}</span>
+            <span class="mdi mdi-shopping-outline text-title dark:text-white text-[24px] sm:text-[28px]"></span>
+        </button>
+        <div class="hdr_cart_popup w-80 md:w-96 absolute z-50 top-full right-0 sm:right-10 xl:right-0 bg-white dark:bg-title p-5 md:p-[30px] border border-primary"
+            [ngClass]="cartItem ? '' : 'hidden'">
+            <h4 class="font-medium leading-none mb-4 text-xl md:text-2xl">Cart List</h4>
+            <div>
+                <div class="hdr-cart-item">
+                    <div *ngFor="let item of cartItems"
+                        class="flex gap-[15px] relative pb-[15px] mb-[15px] border-b border-bdr-clr dark:border-bdr-clr-drk group">
+                        <a [routerLink]="['/product-details', item.id]" class="block">
+                            <img class="w-[70px] md:w-auto h-full" [src]="item.imgpath" alt="cart">
+                        </a>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[14px] md:text-[15px] leading-none block">{{item.itemname}}</span>
+                                <span class="w-[6px] h-[6px] rounded-full bg-primary"></span>
+                                <span class="text-[14px] md:text-[15px] leading-none block">{{item.scost}}</span>
+                            </div>
+                            <h6 class="text-base md:text-lg font-semibold !leading-none mt-[10px]">
+                                <a [routerLink]="['/product-details', item.id]">
+                                    {{item.catname}}
+                                </a>
+                            </h6>
+                            <div class="inc-dec flex items-center gap-2 mt-4">
+                                <div (click)="decreaseQuantity(item)"
+                                    class="dec w-6 h-6 bg-[#E8E9EA] dark:bg-dark-secondary flex items-center justify-center">
+                                    <svg class="fill-current text-title dark:text-white" width="12" height="2"
+                                        viewBox="0 0 14 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M10.4361 0.203613H12.0736L7.81774 0.203615H13.8729V1.80309H7.81774L3.50809 1.80309H1.87053L6.18017 1.80309H0.125V0.203615H6.18017L10.4361 0.203613Z" />
+                                    </svg>
+                                </div>
+                                <input
+                                    class="w-6 h-auto outline-none bg-transparent text-base mg:text-lg leading-none text-title dark:text-white text-center"
+                                    type="text" [(ngModel)]="item.quantity">
+                                <div (click)="increaseQuantity(item)"
+                                    class="inc w-6 h-6 bg-[#E8E9EA] dark:bg-dark-secondary flex items-center justify-center">
+                                    <svg class="fill-current text-title dark:text-white" width="12" height="12"
+                                        viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M6.18017 0.110352H7.81774V6.16553H13.8729V7.76501H7.81774V13.8963H6.18017V7.76501H0.125V6.16553H6.18017V0.110352Z" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div (click)="removeFromCart(item)"
+                            class="wishList_item_close absolute top-0 right-0 w-6 h-6 flex items-center justify-center bg-title dark:bg-white bg-opacity-10 dark:bg-opacity-10 group hover:bg-primary dark:hover:bg-primary opacity-0 group-hover:opacity-100 text-title dark:text-white duration-300 hover:text-white">
+                            <svg class="fill-current" width="10" height="10" viewBox="0 0 10 10" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M0.636719 1.56306L1.56306 0.636719L4.98839 4.06204L8.41371 0.636719L9.31851 1.54152L5.89319 4.96685L9.3616 8.43526L8.43526 9.3616L4.96685 5.89319L1.54152 9.31851L0.636719 8.41371L4.06204 4.98839L0.636719 1.56306Z" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <h6 *ngIf="cartItems.length === 0">No cart items</h6>
+                <div *ngIf="cartItems.length > 0" class="pt-5 md:pt-[30px] mt-5 md:mt-[30px] border-t border-bdr-clr dark:border-bdr-clr-drk">
+                    <h4 class="mb-5 md:mb-[30px] font-medium !leading-none text-lg md:text-xl text-right">
+                        Subtotal : {{ cartTotal | currency:'INR' }}
+                    </h4>
+                    <div class="grid grid-cols-2 gap-4">
+                        <a [routerLink]="'/cart'" class="btn btn-outline btn-sm" data-text="View Cart">
+                            <span>View Cart</span>
+                        </a>
+                        <a [routerLink]="'/checkout'" class="btn btn-theme-solid btn-sm" data-text="Checkout">
+                            <span>Checkout</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hamburger -->
+    <button class="hamburger" [ngClass]="toggle ? 'opened' : ''" (click)="toggleValue()">
+        <svg class="stroke-current text-title dark:text-white" width="40" viewBox="0 0 100 100">
+            <path class="line line1"
+                d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+            <path class="line line2" d="M 20,50 H 80" />
+            <path class="line line3"
+                d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+        </svg>
+    </button>
+    <!-- Dark Light -->
+    <!-- <div class="w-[1px] bg-title/20 dark:bg-white/20 h-7 hidden sm:block"></div>
+    <app-switcher/> -->
+</div>
+
+<div *ngIf="search"
+    class="search_popup fixed top-0 left-0 bg-red dark:bg-[#39434D] bg-opacity-90 dark:bg-opacity-80 backdrop-blur-[3px] dark:backdrop-blur-[7.5px] w-full h-screen z-[999] px-[15px] md:px-[30px] py-12 md:py-[70px] overflow-y-auto transform scale-90 opacity-0 invisible transition-all duration-300 flex items-center justify-center search-active">
+    <div class="container">
+        <div class="relative max-w-4xl mx-auto hdr-search-wrapper">
+            <button (click)="search = !search"
+                class="hdr_search_close w-[36px] h-[36px] absolute bottom-full md:top-0 right-0 flex items-center justify-center bg-title dark:bg-white text-white dark:text-title">
+                <svg class="fill-current" width="15" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11.742 12.0717C11.6006 12.2131 11.445 12.2838 11.2753 12.2838C11.1056 12.2838 10.9501 12.2131 10.8086 12.0717L6.16295 7.42598L1.55968 12.0292C1.41826 12.1707 1.2627 12.2414 1.09299 12.2414C0.923289 12.2414 0.767726 12.1707 0.626304 12.0292L0.32932 11.7323C0.187898 11.5908 0.117187 11.4353 0.117188 11.2656C0.117187 11.0959 0.187898 10.9403 0.329319 10.7989L4.93258 6.19561L0.414172 1.6772C0.272751 1.53578 0.20204 1.38021 0.20204 1.21051C0.20204 1.0408 0.272751 0.885239 0.414172 0.743817L0.73237 0.42562C0.873792 0.284198 1.02935 0.213487 1.19906 0.213487C1.36877 0.213488 1.52433 0.284198 1.66575 0.42562L6.18416 4.94403L10.8086 0.319553C10.9501 0.178132 11.1056 0.107421 11.2753 0.107422C11.445 0.107422 11.6006 0.178133 11.742 0.319554L12.039 0.616539C12.1804 0.75796 12.2511 0.913524 12.2511 1.08323C12.2511 1.25293 12.1804 1.4085 12.039 1.54992L7.41453 6.1744L12.0602 10.8201C12.2016 10.9615 12.2724 11.1171 12.2724 11.2868C12.2724 11.4565 12.2016 11.612 12.0602 11.7535L11.742 12.0717Z" />
+                </svg>
+            </button>
+
+            <div class="bg-white dark:bg-title py-8 sm:py-10 md:py-[60px] px-5 sm:px-8">
+                <div class="relative">
+                    <input
+                        class="outline-none border-b border-bdr-clr dark:border-bdr-clr-drk pb-4 md:pb-[22px] text-title w-full pr-7 md:pr-10 leading-none font-lg placeholder:text-title bg-transparent dark:bg-transparent dark:text-white dark:placeholder:text-white"
+                        type="text" placeholder="Type your keyword">
+                    <button class="absolute right-0 top-0">
+                        <svg class="fill-current text-title dark:text-white w-5 md:w-[30px]" viewBox="0 0 30 31"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M29.5439 28.2361L22.1484 20.5625C24.0499 18.3074 25.0917 15.4701 25.0917 12.5162C25.0917 5.61489 19.4635 0 12.5459 0C5.62818 0 0 5.61489 0 12.5162C0 19.4176 5.62818 25.0325 12.5459 25.0325C15.1429 25.0325 17.6177 24.251 19.7335 22.7676L27.1852 30.4994C27.4967 30.8221 27.9156 31 28.3646 31C28.7895 31 29.1926 30.8384 29.4986 30.5445C30.1488 29.9203 30.1695 28.8853 29.5439 28.2361ZM12.5459 3.26511C17.6591 3.26511 21.8189 7.41506 21.8189 12.5162C21.8189 17.6174 17.6591 21.7674 12.5459 21.7674C7.43261 21.7674 3.27283 17.6174 3.27283 12.5162C3.27283 7.41506 7.43261 3.26511 12.5459 3.26511Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="mt-10 md:mt-12">
+                    <h4 class="font-medium leading-none">Popular Tags</h4>
+                    <div class="flex flex-wrap gap-[10px] md:gap-[15px] mt-5 md:mt-6">
+                        <a class="btn btn-theme-outline btn-xs" href="#" data-text="Chair"><span>Chair</span></a>
+                        <a class="btn btn-theme-outline btn-xs" href="#" data-text="Art & Paint"><span>Art &
+                                Paint</span></a>
+                        <a class="btn btn-theme-outline btn-xs" href="#" data-text="Mirror"><span>Mirror</span></a>
+                        <a class="btn btn-theme-outline btn-xs" href="#" data-text="Table"><span>Table</span></a>
+                        <a class="btn btn-theme-outline btn-xs" href="#" data-text="Lamp"><span>Lamp</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

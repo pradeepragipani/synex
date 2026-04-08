@@ -1,0 +1,18 @@
+<owl-carousel-o #owlCarousel [options]="customOptions" class="owl-carousel home-v2-blog max-w-lg lg:max-w-[750px] mx-auto block">
+    <ng-container *ngFor="let item of blogData">
+        <ng-template carouselSlide>
+            <div class="relative group">
+                <a [routerLink]="'/blog-details-v1'" class="overflow-hidden block">
+                    <img class="duration-300 transform scale-100 group-hover:scale-110 w-full" [src]="item.image" alt="blog-card">
+                </a>
+                <div class="sm:bg-white sm:bg-opacity-90 sm:dark:bg-title sm:dark:bg-opacity-90 mt-4 sm:p-5 md:p-6 sm:absolute z-10 bottom-0 left-0 sm:w-11/12 max-w-md px-5 sm:px-0 ">
+                    <ul class="flex items-center gap-[10px] flex-wrap">
+                        <li class="text-[15px] leading-none dark:text-white">{{item.date}}</li>
+                        <li><a [routerLink]="'/blog-tag'" class="inline-block text-title font-medium text-[15px] leading-none py-[10px] px-5 rounded-md bg-primary-midum">{{item.tag}}</a></li>
+                    </ul>
+                    <h5 class="mt-3 font-medium dark:text-white leading-[1.5] text-xl"><a [routerLink]="'/blog-details-v1'" class="text-underline">{{item.desc}}</a></h5>
+                </div>
+            </div>
+        </ng-template>
+    </ng-container>
+</owl-carousel-o>

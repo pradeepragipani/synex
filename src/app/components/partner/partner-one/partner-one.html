@@ -1,0 +1,10 @@
+<owl-carousel-o  #owlCarousel [options]="customOptions" class="max-w-[1720px] mx-auto owl-carousel home-v1-partner-slider block" >
+    <ng-container *ngFor="let item of partnerData">
+        <ng-template carouselSlide>
+            <a [routerLink]=""  class="flex items-center justify-center w-full" aria-label="partner logo">
+                <img [src]="item.image" alt="">
+            </a>
+        </ng-template>
+    </ng-container>
+</owl-carousel-o>
+

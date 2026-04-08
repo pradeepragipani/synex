@@ -1,0 +1,22 @@
+<app-navbar-one/>
+
+<div class="py-16 sm:py-24">
+    <div class="container">
+        <div class="max-w-[710px] mx-auto text-center p-7 sm:p-10 lg:p-12">
+            <div class="div">
+                <img [src]="'assets/img/thank-you.png'" alt="thank-you">
+            </div>
+            <h3 class="leading-[1.2] mt-4 md:mt-6 text-2xl md:text-[32px] font-bold text-title dark:text-white">
+            For Shopping with Furnixar
+            </h3>
+            <p class="mt-3 text-base sm:text-lg text-paragraph dark:text-white">
+                Please Check your email for Download Invoice . Or <a [routerLink]="'/'" class="text-primary underline">Click here </a>
+            </p>
+            <a [routerLink]="'/'" class='btn btn-solid mt-4 md:mt-6' data-text="Back to home">
+                <span>Back to home</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<app-footer-one/>

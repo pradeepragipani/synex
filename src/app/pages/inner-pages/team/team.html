@@ -1,0 +1,47 @@
+<app-navbar-one/>
+
+<div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70" style="background-image:url('assets/img/shortcode/breadcumb.jpg');">
+    <div class="text-center w-full">
+        <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Team Member</h2>
+        <ul class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
+            <li><a [routerLink]="'/'">Home</a></li>
+            <li>/</li>
+            <li class="text-primary">Team</li>
+        </ul>
+    </div>
+</div>
+
+<div class="py-16">
+    <div class="container-fluid">
+        <div  class="max-w-[1720px] mx-auto grid lg:grid-cols-2 gap-[30px]">
+            <div *ngFor="let item of teamdata" class="group sm:grid sm:grid-cols-2 bg-[#F8F5F0] dark:bg-[#1E2A35]" data-aos="fade-up">
+                <div [ngClass]="item.class1">
+                    <img class="w-full object-cover h-full" [src]="item.image" alt="team member">
+                </div>
+                <div [ngClass]="item.class2">
+                    <div class="sm:max-w-[294px]">
+                        <h4 class="font-semibold leading-none text-xl md:text-2xl duration-300 transition-all group-hover:text-primary"><a href="#">Luciana Sacchena</a></h4>
+                        <span class="text-title dark:text-white-light leading-none mt-[10px] block">Product Designer</span>
+                        <p class="mt-[15px]">Product designers are the creative architects behind the innovative solutions that shape our world.  </p>
+                        <div class="flex items-center gap-5 md:gap-6 mt-[15px]">
+                            <a [routerLink]="[]" class="hover:text-primary dark:hover:text-primary transition-all duration-300 text-paragraph dark:text-white">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a [routerLink]="[]" class="hover:text-primary dark:hover:text-primary transition-all duration-300 text-paragraph dark:text-white">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a [routerLink]="[]" class="hover:text-primary dark:hover:text-primary transition-all duration-300 text-paragraph dark:text-white">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a [routerLink]="[]" class="hover:text-primary dark:hover:text-primary transition-all duration-300 text-paragraph dark:text-white">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer-one/>

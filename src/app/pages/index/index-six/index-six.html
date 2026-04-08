@@ -1,0 +1,170 @@
+<div class="dark:bg-title bg-[#EBEBEB]">
+    <app-navbar-one/>
+
+    <div class="hv6-banner bg-overlay py-20 sm:py-24 md:py-32 2xl:py-[245px] bg-[#EBEBEB] dark:bg-title dark:before:bg-dark-secondary dark:before:bg-opacity-50 2xl:dark:before:hidden">
+        <div class="container">
+            <div class="max-w-1366 mx-auto">
+                <span class="text-xl sm:text-2xl lg:text-3xl leading-none block text-primary" data-aos="fade-up">New Arrival</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-6xl sm:leading-tight leading-tight lg:leading-tight max-w-[300px] sm:max-w-[400px] lg:max-w-[602px] mt-5" data-aos="fade-up" data-aos-delay="100">
+                    Premium Soft Toys for Your Kids
+                </h2>
+                <p class="max-w-[450px] lg:max-w-[550px] mt-3 sm:mt-0" data-aos="fade-up" data-aos-delay="200">
+                    Discover the joy of cuddles with our enchanting collection of soft toys, perfect for all ages and occasions. Each plush friend is crafted with love and care, ensuring quality and comfort. Explore our whimsical world where imagination meets huggable happiness!
+                </p>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <a [routerLink]="'/categories'" class="btn btn-outline mt-6" data-text="Let's Shop Now">
+                        <span>Let's Shop Now</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-[#EBEBEB] dark:bg-title s-py-100" data-aos="fade-up">
+        <div class="container">
+            <div class="max-w-1366 mx-auto">
+                <div class="bg-[#F3F3F3] dark:bg-dark-secondary rounded-[10px] xl:flex xl:justify-between sm:gap-5 grid sm:grid-cols-2 relative">
+                    <ng-container *ngFor="let item of categories | slice:0:5">
+                        <a [routerLink]="'/categories'" [queryParams]="{ id: item.catid }" class="group flex items-center gap-5 p-6">
+                        <!-- <a [routerLink]="'/categories'" [queryParams]="{ id: item.catid }" class="group flex items-center gap-5 p-6"> -->
+                            <!-- <div class="w-14 md:w-[70px] h-14 p-[10px] md:h-[70px] flex items-center justify-center border border-primary rounded-[10px]  duration-300">
+                                <div class="">
+                                    <img [src]="item.image" alt="">                           
+                                </div>                               
+                            </div> -->
+                            <div>
+                                <h5 class="font-medium leading-none text-lg lg:text-xl">{{item.catname}}</h5>
+                                <!-- <p class="leading-none mt-[10px]">{{item.product}}</p> -->
+                            </div>
+                        </a>
+                        <div class="w-[1px] border border-dashed border-title border-opacity-50 dark:border-opacity-50 dark:border-white absolute h-full xl:h-auto xl:static transform left-1/2 -translate-x-1/2 xl:-translate-x-0 top-0 hidden sm:block last:hidden"></div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="s-py-100 bg-[#F3F3F3] dark:bg-dark-secondary relative z-[1] overflow-hidden">
+        <img class="absolute top-0 left-[6%] z-[-1] w-[10%] 2xl:w-auto" [src]="'assets/img/home-v6/offer-01.png'" alt="offer-shape" data-aos="fade-down">
+        <img class="absolute right-0 bottom-0 lg:bottom-auto lg:top-1/2 transform lg:-translate-y-1/2 z-[-1] w-1/4 2xl:w-auto" [src]="'assets/img/home-v6/offer-02.png'" alt="offer-shape">
+        <div class="container">
+            <div class="max-w-[780px] mx-auto text-center">
+                <h2 class="leading-none text-7xl sm:text-100 lg:text-[150px] xl:text-[200px] italic flex items-start justify-center" data-aos="fade-up">45% <sup class="text-xl sm:text-2xl lg:text-3xl font-normal text-primary transform rotate-90 inline-block not-italic translate-y-[20px] lg:translate-y-[40px]">OFF</sup></h2>
+                <!-- <h3 class="font-normal leading-none mt-4 sm:mt-6 text-xl sm:text-2xl md:text-3xl" data-aos="fade-up" data-aos-delay="100">Hurry Up ! It,s Only for Today</h3>
+                <p class="mt-5 sm:mt-6" data-aos="fade-up" data-aos-delay="200">Don't miss out on exclusive savings! Enjoy a massive 45% discount, available for today only. Hurry, grab your deal before it's gone!This special deal won’t last long, so claim it while you can! </p>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <a [routerLink]="'/shop-v2'" class="btn btn-outline mt-6" data-text="Claim Discount">
+                        <span>Claim Discount</span>
+                    </a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="s-py-100-50" >
+        <div class="container">
+            <div class="max-w-1366 mx-auto">
+                <div class="max-w-[547px] mx-auto mb-8 md:mb-12 text-center" data-aos="fade-up">
+                    <img [src]="'/assets/img/svg/bed-2.svg'" class="mx-auto" alt="">            
+                    <h2 class="mt-[15px] leading-none">Latest Products</h2>
+                    <p class="mt-[10px] md:mt-[15px]">Be the first to experience innovation with our latest arrivals. Stay ahead of the curve and discover what's new in style. </p>
+                </div>
+                
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 lg:gap-x-7 gap-y-[30px] lg:gap-y-12" data-aos="fade-up" data-aos-delay="100">
+                    <div *ngFor="let item of tendingItems">
+                        <div class="group relative overflow-hidden">
+                            <img class="w-full transform duration-300 group-hover:scale-110" [src]="item.imgpath" alt="product-card">
+                            <!-- <div class="absolute w-full h-full top-0  bg-white dark:bg-title bg-opacity-70 dark:bg-opacity-70 flex items-end p-5 scale-110 opacity-0 duration-200 group-hover:scale-100 group-hover:opacity-100">
+                                <ul class="flex items-center gap-2 mt-1">
+                                    <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
+                                    <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
+                                    <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
+                                    <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>
+                                    <li><i class="fa-solid fa-star text-slate-300 text-[14px]"></i></li>
+                                    <li class="dark:text-gray-100 text-[#3C474E]">( 1,230 )</li>
+                                </ul>
+                                <div class="absolute z-10 top-5 right-5 flex flex-col items-end gap-3">
+                                    <a href="#" class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon new-product-icon-3">
+                                        <i class="mdi mdi-shopping-outline dark:text-white text-[24px]"></i>      
+                                        <span class="mt-1">Add to Cart</span>
+                                    </a>
+                                    <button class="bg-white dark:bg-title dark:text-white bg-opacity-80 flex items-center justify-center gap-2 px-4 py-[10px] text-base leading-none text-title rounded-[40px] h-14 overflow-hidden new-product-icon new-product-icon-3 quick-view">
+                                        <i class="mdi mdi-eye-outline dark:text-white text-[24px]"></i>                                        
+                                        <span class="mt-1">Quick View</span>
+                                    </button>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="mt-4 md:mt-6 flex items-start justify-between gap-4">
+                            <div>
+                                <h5 class="leading-none mb-4 dark:text-white font-primary text-lg font-medium">&#8377; {{item.scost}}</h5>
+                                <h5 class="text-lg md:text-xl font-normal dark:text-white leading-[1.5]"><a [routerLink]="['/product-details',item.id]">{{item.itemname}}</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-7 md:mt-12" data-aos="fade-up" data-aos-delay="200">
+                    <a [routerLink]="'/shop-v3'" class="btn btn-outline" data-text="See all Products">
+                        <span>See all Products</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="s-py-50" data-aos="fade-up">
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="relative">
+                <img class="w-full object-cover" [src]="'assets/img/custom/pdct-01.png'" alt="product">
+                <!-- <div class="absolute w-full h-full flex items-center justify-center top-0 z-10">
+                    <div class="bg-white dark:bg-title bg-opacity-90 dark:bg-opacity-90 p-5 sm:p-6 flex items-start flex-col">
+                        <h4 class="font-normal leading-none">Up to <span class="text-primary">20% off</span> all furniture on store</h4>
+                        <h2 class="text-3xl md:text-4xl xl:text-5xl leading-none mt-[15px]">Home & Office</h2>
+                        <a [routerLink]="'/shop-v4'" class="btn btn-outline btn-sm mt-4 sm:mt-6" data-text="Shop Now">
+                            <span>Shop Now</span>
+                        </a>
+                    </div>
+                </div> -->
+            </div>
+            <div class="relative">
+                <img class="w-full object-cover" [src]="'assets/img/custom/pdct-02.png'" alt="product">
+                <!-- <div class="absolute w-full h-full flex items-center justify-center top-0 z-10">
+                    <div class="bg-white dark:bg-title bg-opacity-90 dark:bg-opacity-90 p-5 sm:p-6 flex items-start flex-col">
+                        <h4 class="font-normal leading-none">Up to <span class="text-primary">35% off</span> all Interior Items</h4>
+                        <h2 class="text-3xl md:text-4xl xl:text-5xl leading-none mt-[15px]">Interior Setup</h2>
+                        <a [routerLink]="'/shop-v2'" class="btn btn-outline btn-sm mt-4 sm:mt-6" data-text="Shop Now">
+                            <span>Shop Now</span>
+                        </a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="s-py-50-100">
+        <div class="container">
+            <div class="max-w-1366 mx-auto">
+                <div class="max-w-[547px] mx-auto mb-8 sm:mb-[70px] text-center" data-aos="fade-up">
+                    <img [src]="'/assets/img/svg/comment-2.svg'" class="mx-auto" alt="">
+                    <h2 class="mt-[15px] leading-none">From the Blog</h2>
+                    <p class="mt-[10px] md:mt-[15px]">Stay informed and inspired with our latest blog posts. Explore insightful content that keeps you ahead of trends. </p>
+                </div>
+                <app-blog-six/>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="py-12 bg-[#F3F3F3] dark:bg-dark-secondary">
+        <div class="container">
+            <div class="max-w-[1265px] mx-auto">
+                <div class="w-full relative">
+                    <app-partner-one/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-footer-six/>
+
+</div>

@@ -1,0 +1,56 @@
+ <div class="relative bg-overlay before:bg-title before:bg-opacity-95" style="background-image: url('assets/img/bg/footer.jpg');">
+    <div class="s-pt-100">
+        <div class="container-fluid">
+            <!-- <div class="max-w-lg lg:max-w-[1052px] mx-auto flex items-end justify-between gap-3 lg:gap-8 flex-col lg:flex-row s-pb-100">
+                <div class="md:max-w-[473px] w-full">
+                    <h2 class="font-bold leading-none text-white">Newsletter</h2>
+                    <p class="mt-2 sm:mt-4 text-white-light">Stay in the loop with exclusive offers and updates. Subscribe to our newsletter for the latest trends and promotions delivered straight to your inbox. </p>
+                </div>
+                <div class="mt-4 lg:mt-6 sm:flex md:max-w-[478px] w-full">
+                    <input class="w-full h-12 md:h-14 bg-white bg-opacity-[0.03] border border-white text-white placeholder:text-white-light border-opacity-30 focus:border-primary p-4 outline-none sm:flex-1 sm:border-r-0 duration-300" type="text" placeholder="Enter your email address">
+                    <button class="w-full h-12 bg-primary text-white flex items-center justify-center text-base md:text-lg font-medium p-3 mt-3 sm:mt-0 sm:w-32 sm:h-auto sm:flex-none">Subscribe</button>
+                </div>
+            </div> -->
+
+            <div class="max-w-[1722px] mx-auto flex items-start justify-between gap-10 s-pb-100 flex-wrap lg:flex-nowrap footer-wrapper">
+
+                <div class="lg:max-w-[522px] w-full sm:text-center -order-1 lg:order-none" *ngIf="apiData">
+                    <!-- <img class="sm:mx-auto w-[150px] sm:w-auto" [src]="'assets/img/footer-logo.svg'" alt="logo"> -->
+                    <img class="sm:mx-auto w-[150px] sm:w-auto" [src]="'assets/img/custom/Synex.png'" alt="logo" style="width: 50px;">
+                    <p class="mt-[15px] text-white">{{apiData.companyname}}</p>
+                    <p class="mt-[15px] text-white" [innerHTML]="apiData.address"></p>
+                    <p class="mt-[15px] text-white">Mobile: {{apiData.contactnumber}}</p>
+                    <p class="mt-[15px] text-white">Email: {{apiData.emailid}}</p>
+                    <p class="mt-[15px] text-white">© {{year}} Synex.</p>
+                    <!-- <p class="mt-4 text-white-light max-w-[522px] sm:mx-auto">Furnixar is a modern furniture template for an eCommerce website designed to help you create an impressive online store for your furniture or home decor business.  </p> -->
+                    <!-- <div class="flex items-center sm:justify-center gap-4 mt-6">
+                        <a [routerLink]="" class="w-10 h-10 rounded-full border border-white border-opacity-50 flex items-center justify-center group hover:border-primary duration-300" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f text-white text-opacity-70 group-hover:text-primary duration-300"></i>
+                        </a>
+                        <a [routerLink]="" class="w-10 h-10 rounded-full border border-white border-opacity-50 flex items-center justify-center group hover:border-primary duration-300" aria-label="Twitter">
+                            <i class="fa-brands fa-twitter text-white text-opacity-70 group-hover:text-primary duration-300"></i>
+                        </a>
+                        <a [routerLink]="" class="w-10 h-10 rounded-full border border-white border-opacity-50 flex items-center justify-center group hover:border-primary duration-300" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram text-white text-opacity-70 group-hover:text-primary duration-300"></i>
+                        </a>
+                        <a [routerLink]="" class="w-10 h-10 rounded-full border border-white border-opacity-50 flex items-center justify-center group hover:border-primary duration-300" aria-label="Linkedin">
+                            <i class="fa-brands fa-linkedin-in text-white text-opacity-70 group-hover:text-primary duration-300"></i>
+                        </a>
+                    </div> -->
+                </div>
+
+                <div class="lg:max-w-[366px] sm:w-[45%] lg:w-full flex items-start justify-between gap-10 footer-inner-wrapper">
+                    <div>
+                        <ul class="text-white leading-none flex flex-col gap-4">
+                            <li *ngFor="let item of footerLink" class="duration-100 hover:text-primary inline-block group"><a class="text-underline-primary" [routerLink]="item.link">{{item.name}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-[1722px] mx-auto border-t border-white border-opacity-10 py-5 md:py-7 text-center">
+                <p class="text-white">© {{year}} Synex. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>

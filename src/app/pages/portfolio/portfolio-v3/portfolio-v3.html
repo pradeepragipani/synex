@@ -1,0 +1,227 @@
+<app-navbar-one/>
+
+<div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70" style="background-image:url('assets/img/shortcode/breadcumb.jpg');">
+    <div class="text-center w-full">
+        <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Portfolio</h2>
+        <ul class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
+            <li><a [routerLink]="'/'">Home</a></li>
+            <li>/</li>
+            <li class="text-primary">Portfolio</li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="s-py-100 overflow-hidden relative">
+    <div class="container-fluid">
+        <div class="max-w-[1720px] mx-auto">
+            <div class="portfolio2-button flex items-center gap-3 md:gap-4 lg:gap-6 flex-wrap mb-8 md:mb-12" data-aos="fade-up" data-aos-delay="100">
+                <button (click)="activeTab = 1" class="text-base md:text-[17px] leading-none font-medium hover:text-primary duration-300" [ngClass]="activeTab === 1 ? 'active' : ''">
+                    All
+                </button>
+                <svg class="fill-current text-paragraph dark:text-white-light" width="7" height="14" viewBox="0 0 7 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.894 0.194247C6.054 2.48625 5.214 4.77825 4.374 7.07025C3.534 9.36225 2.688 11.6542 1.836 13.9462H0.306C1.158 11.6542 2.004 9.36225 2.844 7.07025C3.684 4.77825 4.53 2.48625 5.382 0.194247H6.894Z"/>
+                </svg>
+                <button (click)="activeTab = 2" class="text-base md:text-[17px] leading-none font-medium hover:text-primary duration-300" [ngClass]="activeTab === 2 ? 'active' : ''">
+                    Full Interior
+                </button>
+                <svg class="fill-current text-paragraph dark:text-white-light" width="7" height="14" viewBox="0 0 7 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.894 0.194247C6.054 2.48625 5.214 4.77825 4.374 7.07025C3.534 9.36225 2.688 11.6542 1.836 13.9462H0.306C1.158 11.6542 2.004 9.36225 2.844 7.07025C3.684 4.77825 4.53 2.48625 5.382 0.194247H6.894Z"/>
+                </svg>
+                <button (click)="activeTab = 3" class="text-base md:text-[17px] leading-none font-medium hover:text-primary duration-300" [ngClass]="activeTab === 3 ? 'active' : ''">
+                    Lamp & Vase
+                </button>
+                <svg class="fill-current text-paragraph dark:text-white-light" width="7" height="14" viewBox="0 0 7 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.894 0.194247C6.054 2.48625 5.214 4.77825 4.374 7.07025C3.534 9.36225 2.688 11.6542 1.836 13.9462H0.306C1.158 11.6542 2.004 9.36225 2.844 7.07025C3.684 4.77825 4.53 2.48625 5.382 0.194247H6.894Z"/>
+                </svg>
+                <button (click)="activeTab = 4" class="text-base md:text-[17px] leading-none font-medium hover:text-primary duration-300" [ngClass]="activeTab === 4 ? 'active' : ''">
+                    Table
+                </button>
+                <svg class="fill-current text-paragraph dark:text-white-light" width="7" height="14" viewBox="0 0 7 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.894 0.194247C6.054 2.48625 5.214 4.77825 4.374 7.07025C3.534 9.36225 2.688 11.6542 1.836 13.9462H0.306C1.158 11.6542 2.004 9.36225 2.844 7.07025C3.684 4.77825 4.53 2.48625 5.382 0.194247H6.894Z"/>
+                </svg>
+                <button (click)="activeTab = 5" class="text-base md:text-[17px] leading-none font-medium hover:text-primary duration-300" [ngClass]="activeTab === 5 ? 'active' : ''">
+                    Art Design
+                </button>
+            </div>
+
+            <div *ngIf="activeTab === 1" class="portfolio2-isotope -m-[10px] sm:-m-[15px]" >
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7">
+                    <a *ngFor="let item of portfolioData.slice(0,3)" [routerLink]="['/portfolio-details-v2',item.id]" class="">
+                        <div class="portfolio-card relative before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-0 before:duration-300 hover:before:opacity-100 group overflow-hidden">
+                            <img class="w-full object-cover" [src]="item.image" alt="Portfolio">
+                            <div class="absolute left-7 bottom-7 z-10 transform translate-y-8 duration-300 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                <span class="inline-block text-[15px] leading-none text-title font-medium p-[10px] bg-[#DBCBBD] rounded-md">Art Design</span>
+                                <span class="block text-lg md:text-xl font-semibold leading-none text-white mt-3 md:mt-4">
+                                    Classic Vase & Chair
+                                </span>
+                            </div>
+                            <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 scale-50 duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-100 block">
+                                <i class="mdi mdi-arrow-expand-all text-white text-[40px]"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="grid md:grid-cols-2 grid-cols-1 gap-7 mt-7 mb-7">
+                    <a [routerLink]="'/portfolio-details-v2'">
+                        <div class="portfolio-card relative h-full before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-0 before:duration-300 hover:before:opacity-100 group overflow-hidden">
+                            <img class="w-full h-full object-cover" [src]="'assets/img/gallery/portfolio-03/portfolio-01.jpg'" alt="Portfolio"/>
+                            <div class="absolute left-7 bottom-7 z-10 transform translate-y-8 duration-300 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                <span class="inline-block text-[15px] leading-none text-title font-medium p-[10px] bg-[#DBCBBD] rounded-md">Table</span>
+                                <span class="block text-lg md:text-xl font-semibold leading-none text-white mt-3 md:mt-4">
+                                    Classic Vase & Chair
+                                </span>
+                            </div>
+                            <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 scale-50 duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-100 block">
+                                <i class="mdi mdi-arrow-expand-all text-white text-[40px]"></i>
+                            </span>
+                        </div>
+                    </a>
+
+                    <div class="">
+                        <div class="relative">
+                            <owl-carousel-o [options]="customOptions" #owlCarousel class="portfolio-v3-slider owl-carousel block">
+                                <ng-template carouselSlide >
+                                    <a class="relative before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-title before:bg-opacity-20" [routerLink]="'/portfolio-details-v2'">
+                                        <img class="w-full" [src]="'assets/img/gallery/portfolio-03/portfolio-02.jpg'" alt="Portfolio">
+                                    </a>
+                                </ng-template>
+                                <ng-template carouselSlide >
+                                    <a class="relative before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-title before:bg-opacity-20" [routerLink]="'/portfolio-details-v1'">
+                                        <img class="w-full" [src]="'assets/img/gallery/portfolio-03/portfolio-03.jpg'" alt="Portfolio">
+                                    </a>
+                                </ng-template>
+                                <ng-template carouselSlide >
+                                    <a class="relative before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-title before:bg-opacity-20" [routerLink]="'/portfolio-details-v1'">
+                                        <img class="w-full" [src]="'assets/img/gallery/portfolio-03/portfolio-04.jpg'" alt="Portfolio">
+                                    </a>
+                                </ng-template>
+                            </owl-carousel-o>
+                            <div class="flex justify-between absolute top-1/2 transform -translate-y-1/2 z-20 w-full">
+                                <button (click)="prevSlide()" class="prtflo03_prev w-9 h-9 md:w-14 md:h-14 flex items-center justify-center text-title duration-300 bg-white hover:text-white hover:bg-primary p-2">
+                                    <svg class="fill-current" width="24" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.180223 7.38726L5.62434 12.8314C5.8199 13.0598 6.16359 13.0864 6.39195 12.8908C6.62031 12.6952 6.64693 12.3515 6.45132 12.1232C6.43307 12.1019 6.41324 12.082 6.39195 12.0638L1.87877 7.54516L23.4322 7.54516C23.7328 7.54516 23.9766 7.30141 23.9766 7.00072C23.9766 6.70003 23.7328 6.45632 23.4322 6.45632L1.87877 6.45632L6.39195 1.94314C6.62031 1.74758 6.64693 1.40389 6.45132 1.17553C6.25571 0.947171 5.91207 0.920551 5.68371 1.11616C5.66242 1.13441 5.64254 1.15424 5.62434 1.17553L0.180175 6.6197C-0.0308748 6.83196 -0.0308748 7.1749 0.180223 7.38726Z"/>
+                                    </svg>
+                                </button>
+                                <button (click)="nextSlide()" class="prtflo03_next w-9 h-9 md:w-14 md:h-14 flex items-center justify-center text-title duration-300 bg-white hover:text-white hover:bg-primary p-2">
+                                    <svg class="fill-current" width="24" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M23.8198 6.61958L18.3757 1.17541C18.1801 0.947054 17.8364 0.920433 17.608 1.11604C17.3797 1.31161 17.3531 1.65529 17.5487 1.88366C17.5669 1.90494 17.5868 1.92483 17.608 1.94303L22.1212 6.46168L0.567835 6.46168C0.267191 6.46168 0.0234375 6.70543 0.0234375 7.00612C0.0234375 7.30681 0.267191 7.55052 0.567835 7.55052L22.1212 7.55052L17.608 12.0637C17.3797 12.2593 17.3531 12.6029 17.5487 12.8313C17.7443 13.0597 18.0879 13.0863 18.3163 12.8907C18.3376 12.8724 18.3575 12.8526 18.3757 12.8313L23.8198 7.38714C24.0309 7.17488 24.0309 6.83194 23.8198 6.61958Z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7">
+                    <a *ngFor="let item of portfolioData.slice(3,6)" [routerLink]="'/portfolio-details-v2'" class="">
+                        <div class="portfolio-card relative before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-0 before:duration-300 hover:before:opacity-100 group overflow-hidden">
+                            <img class="w-full object-cover" [src]="item.image" alt="Portfolio">
+                            <div class="absolute left-7 bottom-7 z-10 transform translate-y-8 duration-300 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                <span class="inline-block text-[15px] leading-none text-title font-medium p-[10px] bg-[#DBCBBD] rounded-md">Art Design</span>
+                                <span class="block text-lg md:text-xl font-semibold leading-none text-white mt-3 md:mt-4">
+                                    Classic Vase & Chair
+                                </span>
+                            </div>
+                            <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 scale-50 duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-100 block">
+                                <i class="mdi mdi-arrow-expand-all text-white text-[40px]"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div *ngIf="activeTab === 2" class="portfolio2-isotope -m-[10px] sm:-m-[15px]" >
+                <div class="grid md:grid-cols-2 grid-cols-1 gap-7 mt-7 mb-7">
+                    <a [routerLink]="'/portfolio-details-v2'">
+                        <div class="portfolio-card relative h-full before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-0 before:duration-300 hover:before:opacity-100 group overflow-hidden">
+                            <img class="w-full h-full object-cover" [src]="'assets/img/gallery/portfolio-03/portfolio-01.jpg'" alt="Portfolio"/>
+                            <div class="absolute left-7 bottom-7 z-10 transform translate-y-8 duration-300 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                <span class="inline-block text-[15px] leading-none text-title font-medium p-[10px] bg-[#DBCBBD] rounded-md">Table</span>
+                                <span class="block text-lg md:text-xl font-semibold leading-none text-white mt-3 md:mt-4">
+                                    Classic Vase & Chair
+                                </span>
+                            </div>
+                            <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 scale-50 duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-100 block">
+                                <i class="mdi mdi-arrow-expand-all text-white text-[40px]"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div *ngIf="activeTab === 3" class="portfolio2-isotope -m-[10px] sm:-m-[15px]" >
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7">
+                    <a  *ngFor="let item of portfolioData.slice(0,3)" class="">
+                        <div class="portfolio-card relative before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-0 before:duration-300 hover:before:opacity-100 group overflow-hidden">
+                            <img class="w-full object-cover" [src]="item.image" alt="Portfolio">
+                            <div class="absolute left-7 bottom-7 z-10 transform translate-y-8 duration-300 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                <span class="inline-block text-[15px] leading-none text-title font-medium p-[10px] bg-[#DBCBBD] rounded-md">Art Design</span>
+                                <span class="block text-lg md:text-xl font-semibold leading-none text-white mt-3 md:mt-4">
+                                    Classic Vase & Chair
+                                </span>
+                            </div>
+                            <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 scale-50 duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-100 block">
+                                <i class="mdi mdi-arrow-expand-all text-white text-[40px]"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div *ngIf="activeTab === 4" class="portfolio2-isotope -m-[10px] sm:-m-[15px]" >
+                <div class="grid md:grid-cols-2 grid-cols-1 gap-7 mt-7 mb-7">
+                    <div class="">
+                        <div class="relative">
+                            <owl-carousel-o [options]="customOptions" #owlCarousel class="portfolio-v3-slider owl-carousel block">
+                                <ng-template carouselSlide >
+                                    <a class="relative before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-title before:bg-opacity-20" [routerLink]="'/portfolio-details-v2'">
+                                        <img class="w-full" [src]="'assets/img/gallery/portfolio-03/portfolio-02.jpg'" alt="Portfolio">
+                                    </a>
+                                </ng-template>
+                                <ng-template carouselSlide >
+                                    <a class="relative before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-title before:bg-opacity-20" [routerLink]="'/portfolio-details-v1'">
+                                        <img class="w-full" [src]="'assets/img/gallery/portfolio-03/portfolio-03.jpg'" alt="Portfolio">
+                                    </a>
+                                </ng-template>
+                                <ng-template carouselSlide >
+                                    <a class="relative before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-title before:bg-opacity-20" [routerLink]="'/portfolio-details-v1'">
+                                        <img class="w-full" [src]="'assets/img/gallery/portfolio-03/portfolio-04.jpg'" alt="Portfolio">
+                                    </a>
+                                </ng-template>
+                            </owl-carousel-o>
+                            <div class="flex justify-between absolute top-1/2 transform -translate-y-1/2 z-20 w-full">
+                                <button (click)="prevSlide()" class="prtflo03_prev w-9 h-9 md:w-14 md:h-14 flex items-center justify-center text-title duration-300 bg-white hover:text-white hover:bg-primary p-2">
+                                    <svg class="fill-current" width="24" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M0.180223 7.38726L5.62434 12.8314C5.8199 13.0598 6.16359 13.0864 6.39195 12.8908C6.62031 12.6952 6.64693 12.3515 6.45132 12.1232C6.43307 12.1019 6.41324 12.082 6.39195 12.0638L1.87877 7.54516L23.4322 7.54516C23.7328 7.54516 23.9766 7.30141 23.9766 7.00072C23.9766 6.70003 23.7328 6.45632 23.4322 6.45632L1.87877 6.45632L6.39195 1.94314C6.62031 1.74758 6.64693 1.40389 6.45132 1.17553C6.25571 0.947171 5.91207 0.920551 5.68371 1.11616C5.66242 1.13441 5.64254 1.15424 5.62434 1.17553L0.180175 6.6197C-0.0308748 6.83196 -0.0308748 7.1749 0.180223 7.38726Z"/>
+                                    </svg>
+                                </button>
+                                <button (click)="nextSlide()" class="prtflo03_next w-9 h-9 md:w-14 md:h-14 flex items-center justify-center text-title duration-300 bg-white hover:text-white hover:bg-primary p-2">
+                                    <svg class="fill-current" width="24" height="14" viewBox="0 0 24 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M23.8198 6.61958L18.3757 1.17541C18.1801 0.947054 17.8364 0.920433 17.608 1.11604C17.3797 1.31161 17.3531 1.65529 17.5487 1.88366C17.5669 1.90494 17.5868 1.92483 17.608 1.94303L22.1212 6.46168L0.567835 6.46168C0.267191 6.46168 0.0234375 6.70543 0.0234375 7.00612C0.0234375 7.30681 0.267191 7.55052 0.567835 7.55052L22.1212 7.55052L17.608 12.0637C17.3797 12.2593 17.3531 12.6029 17.5487 12.8313C17.7443 13.0597 18.0879 13.0863 18.3163 12.8907C18.3376 12.8724 18.3575 12.8526 18.3757 12.8313L23.8198 7.38714C24.0309 7.17488 24.0309 6.83194 23.8198 6.61958Z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="activeTab === 5" class="portfolio2-isotope -m-[10px] sm:-m-[15px]" >
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-7">
+                    <a *ngFor="let item of portfolioData.slice(3,6)" class="">
+                        <div class="portfolio-card relative before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-0 before:duration-300 hover:before:opacity-100 group overflow-hidden">
+                            <img class="w-full object-cover" [src]="item.image" alt="Portfolio">
+                            <div class="absolute left-7 bottom-7 z-10 transform translate-y-8 duration-300 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                                <span class="inline-block text-[15px] leading-none text-title font-medium p-[10px] bg-[#DBCBBD] rounded-md">Art Design</span>
+                                <span class="block text-lg md:text-xl font-semibold leading-none text-white mt-3 md:mt-4">
+                                    Classic Vase & Chair
+                                </span>
+                            </div>
+                            <span class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 scale-50 duration-300 opacity-0 group-hover:opacity-100 group-hover:scale-100 block">
+                                <i class="mdi mdi-arrow-expand-all text-white text-[40px]"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer-one/>

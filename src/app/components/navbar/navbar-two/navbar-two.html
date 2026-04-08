@@ -1,0 +1,114 @@
+<div class="header-area header-v2 absolute top-0 left-0 right-0 z-10 w-full border-b-[3px] border-[#EEF1F3] dark:border-bdr-clr-drk bg-white bg-opacity-50 dark:bg-dark-secondary dark:bg-opacity-50" [ngClass]="scroll ? 'sticky-header' : ''">
+    <div class="container">
+        <div class="flex items-center justify-between gap-5 relative py-3 sm:py-5 max-w-1366 mx-auto header-wrapper">
+            <div class="flex items-center gap-5 sm:gap-8 md:gap-12">
+                <!-- Logo -->
+                <a class="cursor-pointer block" [routerLink]="'/'" aria-label="Furnixar">
+                    <img [src]="'assets/img/svg/logo.svg'" alt="" class='dark:hidden w-[120px] sm:w-[200px]'/> 
+                    <img [src]="'assets/img/svg/logo-light.svg'" alt="" class='dark:block hidden w-[120px] sm:w-[200px]'/>
+                </a>
+    
+                <button class="hamburger hamburger-v2 transform translate-y-1 sm:translate-y-[6px]" [ngClass]="toggle ? 'opened' : ''" (click)="toggle = !toggle">
+                    <svg class="stroke-current text-title dark:text-white" width="40" viewBox="0 0 100 100">
+                    <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+                    <path class="line line2" d="M 20,50 H 80" />
+                    <path class="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+                    </svg>
+                </button>
+            </div>
+            <app-navbar-menu-two/>
+        </div>
+    </div>
+    <div class="hdr-v2-menu absolute top-full left-0 w-64 sm:w-80 bg-[#f5f5f5] py-[15px] px-5 sm:px-[30px] transform translate-y-[3px] z-50 dark:bg-dark-secondary shadow-lg -translate-x-[256px] sm:-translate-x-[300px] opacity-0 invisible" [ngClass]="toggle ? 'active' : ''">
+        <ul>
+            <li class="relative" [ngClass]="['/','/index-v2'].includes(current) ? 'active' : ''">
+                <a [routerLink]="[]">Home<span></span></a>
+                <ul class="sub-menu ">
+                    <li [ngClass]="current === '/' ? 'active' : ''"><a [routerLink]="'/'" class="menu-item">Home Minimal</a></li>
+                    <li [ngClass]="current === '/index-v2' ? 'active' : ''"><a [routerLink]="'/index-v2'" class="menu-item">Home Stylish</a></li>
+                    <li [ngClass]="current === '/index-v3' ? 'active' : ''"><a [routerLink]="'/index-v3'" class="menu-item">Home Accessories</a></li>
+                    <li [ngClass]="current === '/index-v4' ? 'active' : ''"><a [routerLink]="'/index-v4'" class="menu-item">Home Collection</a></li>
+                    <li [ngClass]="current === '/index-v5' ? 'active' : ''"><a [routerLink]="'/index-v5'" class="menu-item">Home Luxury</a></li>
+                    <li [ngClass]="current === '/index-v6' ? 'active' : ''"><a [routerLink]="'/index-v6'" class="menu-item">Home Retro</a></li>
+                </ul>
+            </li>
+            <li>
+                <a [routerLink]="[]">Pages<span></span></a>
+                <div class="mega-menu">
+                    <div class="">
+                        <div class="megamenu-item">
+                            <ul>
+                                <li [ngClass]="current === '/about' ? 'active' : ''"><a [routerLink]="'/about'">About Us</a></li>
+                                <li [ngClass]="current === '/pricing' ? 'active' : ''"><a [routerLink]="'/pricing'">Price Plan</a></li>
+                                <li [ngClass]="current === '/team' ? 'active' : ''"><a [routerLink]="'/team'">Team Member</a></li>
+                                <li [ngClass]="current === '/our-clients' ? 'active' : ''"><a [routerLink]="'/our-clients'">Clients</a></li>
+                                <li [ngClass]="current === '/faq' ? 'active' : ''"><a [routerLink]="'/faq'">FAQs</a></li>
+                                <li [ngClass]="current === '/terms-and-conditions' ? 'active' : ''"><a [routerLink]="'/terms-and-conditions'">Terms & conditions</a></li>
+                            </ul>
+                        </div>
+                        <div class="megamenu-item">
+                            <ul>
+                                <li [ngClass]="current === '/portfolio-v1' ? 'active' : ''"><a [routerLink]="'/portfolio-v1'">Portolfio 1</a></li>
+                                <li [ngClass]="current === '/portfolio-v2' ? 'active' : ''"><a [routerLink]="'/portfolio-v2'">Portolfio 2</a></li>
+                                <li [ngClass]="current === '/portfolio-v3' ? 'active' : ''"><a [routerLink]="'/portfolio-v3'">Portolfio 3</a></li>
+                                <li [ngClass]="current === '/portfolio-details-v1' ? 'active' : ''"><a [routerLink]="'/portfolio-details-v1'">Portolfio details 1</a></li>
+                                <li [ngClass]="current === '/portfolio-details-v2' ? 'active' : ''"><a [routerLink]="'/portfolio-details-v2'">Portolfio details 2</a></li>
+                                <li [ngClass]="current === '/error' ? 'active' : ''"><a [routerLink]="'/error'">404 Error</a></li>
+                            </ul>
+                        </div>
+                        <div class="megamenu-item">
+                            <ul>
+                                <li [ngClass]="current === '/my-profile' ? 'active' : ''"><a [routerLink]="'/my-profile'">My Profile</a></li>
+                                <li [ngClass]="current === '/login' ? 'active' : ''"><a [routerLink]="'/login'">Login</a></li>
+                                <li [ngClass]="current === '/register' ? 'active' : ''"><a [routerLink]="'/register'">Register</a></li>
+                                <li [ngClass]="current === '/forger-password' ? 'active' : ''"><a [routerLink]="'/forger-password'">Forget Password</a></li>
+                                <li [ngClass]="current === '/coming-soon' ? 'active' : ''"><a [routerLink]="'/coming-soon'">Coming Soon</a></li>
+                                <li [ngClass]="current === '/thank-you' ? 'active' : ''"><a [routerLink]="'/thank-you'">Thank you</a></li>
+                            </ul>
+                        </div>
+                        <div class="megamenu-item">
+                            <ul>
+                                <li [ngClass]="current === '/shipping-method' ? 'active' : ''"><a [routerLink]="'/shipping-method'">Shipping Method</a></li>
+                                <li [ngClass]="current === '/payment-method' ? 'active' : ''"><a [routerLink]="'/payment-method'">Payment Method</a></li>
+                                <li [ngClass]="current === '/invoice' ? 'active' : ''"><a [routerLink]="'/invoice'">Invoice</a></li>
+                                <li [ngClass]="current === '/payment-confirmation' ? 'active' : ''"><a [routerLink]="'/payment-confirmation'">Payment Confirmation</a></li>
+                                <li [ngClass]="current === '/payment-success' ? 'active' : ''"><a [routerLink]="'/payment-success'">Payment Completed</a></li>
+                                <li [ngClass]="current === '/payment-failure' ? 'active' : ''"><a [routerLink]="'/payment-failure'">Payment Failure</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="lg:py-[15px] lg:max-w-[280px] w-full hidden lg:block">
+                        <a [routerLink]="'/shop-v1'">
+                            <img [src]="'assets/img/thumb/add.png'" alt="mega-menu-add">
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="relative">
+                <a [routerLink]="'#'">Shop<span></span></a>
+                <ul class="sub-menu ">
+                    <li [ngClass]="current === '/shop-v1' ? 'active' : ''"><a [routerLink]="'/shop-v1'">Shop Layout 01</a></li>
+                    <li [ngClass]="current === '/shop-v2' ? 'active' : ''"><a [routerLink]="'/shop-v2'">Shop Layout 02</a></li>
+                    <li [ngClass]="current === '/shop-v3' ? 'active' : ''"><a [routerLink]="'/shop-v3'">Shop Layout 03</a></li>
+                    <li [ngClass]="current === '/shop-v4' ? 'active' : ''"><a [routerLink]="'/shop-v4'">Shop Layout 04</a></li>
+                    <li [ngClass]="current === '/product-details' ? 'active' : ''"><a [routerLink]="'/product-details'">Product Details</a></li>
+                    <li [ngClass]="current === '/cart' ? 'active' : ''"><a [routerLink]="'/cart'">My Cart</a></li>
+                    <li [ngClass]="current === '/checkout' ? 'active' : ''"><a [routerLink]="'/checkout'">Checkout</a></li>
+                </ul>
+            </li>
+            <li class="relative">
+                <a [routerLink]="[]">Blog<span></span></a>
+                <ul class="sub-menu ">
+                    <li [ngClass]="current === '/blog-v1' ? 'active' : ''"><a [routerLink]="'/blog-v1'">Blog Layout 1</a></li>
+                    <li [ngClass]="current === '/blog-v2' ? 'active' : ''"><a [routerLink]="'/blog-v2'">Blog Layout 2</a></li>
+                    <li [ngClass]="current === '/blog-details-v1' ? 'active' : ''"><a [routerLink]="'/blog-details-v1'">Blog Details 1</a></li>
+                    <li [ngClass]="current === '/blog-details-v2' ? 'active' : ''"><a [routerLink]="'/blog-details-v2'">Blog Details 2</a></li>
+                    <li [ngClass]="current === '/blog-details-v3' ? 'active' : ''"><a [routerLink]="'/blog-details-v3'">Blog Details 3</a></li>
+                     <li [ngClass]="current === '/blog-tag' ? 'active' : ''"><a [routerLink]="'/blog-tag'">Blog Tag</a></li>
+                </ul>
+            </li>
+            <li [ngClass]="current === '/contact' ? 'active' : ''"><a [routerLink]="'/contact'">Contact</a></li>
+            <li class="lg:hidden"><a [routerLink]="'/login'">Login</a></li>
+        </ul>
+    </div>
+</div>
