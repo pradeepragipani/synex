@@ -1,7 +1,7 @@
 <div [ngClass]="classList">
-    <div *ngFor="let item of productList" class="group">
+    <div *ngFor="let item of productList" class="group show-cursor-pointer" (click)="toProductDetails(item)">
         <div class="relative overflow-hidden">
-            <a (click)="toProductDetails(item)">
+            <a>
                 <img class="w-full transform group-hover:scale-110 duration-300" [src]="item.imgpath" alt="shop">
             </a>
 
@@ -36,7 +36,7 @@
             <h4 class="font-medium leading-none dark:text-white text-lg">&#8377; {{item.scost}}</h4>
             <div>
                 <h5 class="font-normal dark:text-white text-xl leading-[1.5]">
-                    <a [routerLink]="['/product-details', item.id]" class="text-underline">{{item.itemname}}</a>
+                    <a class="text-underline">{{item.itemname}}</a>
                 </h5>
                 <!-- <ul class="flex items-center gap-2 mt-1">
                     <li><i class="fa-solid fa-star text-[#EE9818] text-[14px]"></i></li>

@@ -18127,3 +18127,7 @@ body.quick-view-popup-overlay::before{
         transform: rotate(360deg);
     }
 }
+
+.show-cursor-pointer {
+  cursor: pointer;
+}

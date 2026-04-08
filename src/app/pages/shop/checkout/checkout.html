@@ -115,7 +115,7 @@
             </div>
 
             <div data-aos="fade-up" data-aos-delay="200">
-                <div class="bg-[#FAFAFA] dark:bg-dark-secondary pt-[30px] md:pt-[40px] lg:pt-[50px] px-[30px] md:px-[40px] lg:px-[50px] pb-[30px] border border-[#17243026] border-opacity-15 rounded-xl">   
+                <div class="bg-[#FAFAFA] dark:bg-dark-secondary pt-[20px] md:pt-[30px] lg:pt-[40px] px-[20px] md:px-[30px] lg:px-[30px] pb-[20px] border border-[#17243026] border-opacity-15 rounded-xl">   
                     <h4 class="font-semibold leading-none text-xl md:text-2xl mb-6 md:mb-10"></h4>
                     <div class="grid gap-5 mg:gap-6">
 
@@ -130,7 +130,12 @@
                                 </div>
                             </div>
                             
-                            <h6 class="leading-none">{{item.scost | currency:'INR'}}</h6>
+                            <h6 class="leading-none">
+                                {{item.scost | currency:'INR'}}
+                            </h6>
+                            <h6 class="leading-none">
+                                {{item.quantity}}
+                            </h6>
                         </div>
 
                     </div>

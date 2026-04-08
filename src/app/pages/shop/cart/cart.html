@@ -26,6 +26,11 @@
                         </tr>
                     </thead>
                     <tbody class="table-body">
+                        <tr *ngIf="cartItems.length === 0">
+                            <td colspan="5" class="text-center py-10 text-lg md:text-xl font-medium text-title dark:text-white">
+                                <h6 class="text-center mt-3">Your cart is empty.</h6>
+                            </td>
+                        </tr>
                         <tr *ngFor="let item of cartItems">
                             <td class="w-[42%]">
                                 <div class="flex items-center gap-3 md:gap-4 lg:gap-6 cart-product">
