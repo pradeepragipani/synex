@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class TermsAndConditions {
   
+  isLoading: boolean = false;
   load: any;
   apiData: any;
 
@@ -41,14 +42,19 @@ export class TermsAndConditions {
   }
 
   loadApiData(): void {
+    this.isLoading = true;
     this.apiService.postData('getmasterdata', { "orgid": "0", "hflag": "S" }).subscribe({
       next: (data) => {
         window.scrollTo(0, 0);
+        this.isLoading = false;
         this.apiData = data.response[0];
         this.cdr.detectChanges();
       },
       error: (error) => {
         console.error('Error loading API data', error);
+        this.isLoading = false;
+      }, complete: () => {
+        this.isLoading = false;
       }
     });
   }

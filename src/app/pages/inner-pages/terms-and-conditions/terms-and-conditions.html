@@ -15,6 +15,9 @@
 
 <div class="s-py-100">
     <div class="container">
+        <div class="loader-wrapper" *ngIf="isLoading">
+            <span class="loader"></span>
+        </div>
         <div class="max-w-[940px] mx-auto" data-aos="fade-up" *ngIf="apiData">
             <article
                 class="prose prose-h3:!text-3xl prose-h4:!text-2xl sm:prose-lg dark:prose-p:text-white-light dark:prose-li:text-white-light max-w-full prose-li:list-none prose-li:before:relative prose-li:before:content-[url('assets/img/icon/check.svg')] prose-ol:!pl-0 sm:prose-ol:!pl-0 prose-ul:pl-0 sm:prose-ul:pl-0 prose-li:flex prose-li:items-start prose-li:gap-2">

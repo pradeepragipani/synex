@@ -15,6 +15,9 @@
     <div class="container-fluid max-w-[1720px]">
         <div class="faq-wrapper grid lg:grid-cols-1 gap-12 2xl:gap-20">
             <div class="faq-left" data-aos="fade-up">
+                <div class="loader-wrapper" *ngIf="isLoading">
+                    <span class="loader"></span>
+                </div>
                 <div class="single-faq mb-4" *ngFor="let item of apiData; let i=index" [ngClass]="activeIndex === i ? 'active' : ''" (click)="onTabClick(i)">
                     <div class="faq-head p-3 sm:p-5 bg-[#F3F4F5] dark:bg-dark-secondary duration-300 flex items-center justify-between gap-5">
                         <button class="font-medium text-base sm:text-xl text-left text-title dark:text-white">{{ item.question }}</button>

@@ -100,7 +100,7 @@
                     <li [ngClass]="current === '/categories' ? 'active' : ''"><a [routerLink]="'/categories'">Categories</a></li>
                     <li [ngClass]="current === '/about' ? 'active' : ''"><a [routerLink]="'/about'">About</a></li>
                     <li [ngClass]="current === '/contact' ? 'active' : ''"><a [routerLink]="'/contact'">Contact</a></li>
-                    <li [ngClass]="current === '/my-account' ? 'active' : ''"><a [routerLink]="'/my-account'">My Account</a></li>
+                    <li [ngClass]="current === '/my-account' ? 'active' : ''" *ngIf="isLoggedIn"><a [routerLink]="'/my-account'">My Account</a></li>
                     <li class="lg:hidden"><a [routerLink]="'/login'" *ngIf="!isLoggedIn">Login</a></li>
                     <li class="lg:hidden"><a [routerLink]="'/login'" *ngIf="isLoggedIn" (click)="logout()">Logout</a></li>
                 </ul>

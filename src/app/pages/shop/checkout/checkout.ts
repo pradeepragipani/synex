@@ -228,14 +228,6 @@ export class Checkout {
   }
 
   handleOrder(): void {
-    this.router.navigate(['/qr-payment'], {
-      queryParams: {
-        qrCode: "upi:\/\/pay?pa=jpsl.jp2001100001330@jiopay&pn=Synex+Logic+Arena+Bizz+3&mc=5945&tr=JPSL2691373022925QR10838&am=5675.00&cu=INR&invoiceDate=2026-04-09T00:00:00+05:30",
-        message: 'test',
-        referenceId: '123'
-      }
-    });
-
     this.checkoutDisable = true;
     let orderDetails = this.cartItems.map((item) => ({
         itemid: item.id,
@@ -297,13 +289,13 @@ export class Checkout {
           Sessionid: this.userData.sessionid,
         }).subscribe((payRes: any) => {
           if (payRes.code === 0) {
-            this.globalService.error(payRes.message);
+            this.globalService.success(payRes.message);
             this.globalService.clearCart();
             this.router.navigate(['/qr-payment'], {
               queryParams: {
-                qrCode: res.shortURL,
-                message: res.message,
-                referenceId: res.referenceId
+                qrCode: payRes.shortURL,
+                message: payRes.message,
+                referenceId: payRes.referenceId
               }
             });
           } else {

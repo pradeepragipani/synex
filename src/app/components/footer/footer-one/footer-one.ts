@@ -44,4 +44,7 @@ export class FooterOne {
       }
     });
   }
+  scrollToTop() {
+    window.scroll(0, 0);
+  }
 }

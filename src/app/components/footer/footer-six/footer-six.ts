@@ -48,4 +48,7 @@ export class FooterSix {
       }
     });
   }
+  scrollToTop() {
+    window.scroll(0, 0);
+  }
 }
