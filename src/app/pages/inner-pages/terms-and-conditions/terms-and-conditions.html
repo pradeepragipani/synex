@@ -2,13 +2,40 @@
 
 <div class="flex items-center gap-4 flex-wrap bg-overlay p-14 sm:p-16 before:bg-title before:bg-opacity-70"
     style="background-image:url('assets/img/shortcode/breadcumb.jpg');">
-    <div class="text-center w-full">
+    <div class="text-center w-full" *ngIf="load === 'terms-of-use'">
         <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Terms & Conditions</h2>
         <ul
             class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
             <li><a [routerLink]="'/'">Home</a></li>
             <li>/</li>
             <li class="text-primary">Terms & Conditions</li>
+        </ul>
+    </div>
+    <div class="text-center w-full" *ngIf="load === 'cancellation-policy'">
+        <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Cancellation Policy</h2>
+        <ul
+            class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
+            <li><a [routerLink]="'/'">Home</a></li>
+            <li>/</li>
+            <li class="text-primary">Cancellation Policy</li>
+        </ul>
+    </div>
+    <div class="text-center w-full" *ngIf="load === 'privacy-policy'">
+        <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Privacy Policy</h2>
+        <ul
+            class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
+            <li><a [routerLink]="'/'">Home</a></li>
+            <li>/</li>
+            <li class="text-primary">Privacy Policy</li>
+        </ul>
+    </div>
+    <div class="text-center w-full" *ngIf="load === 'return-and-replace-policy'">
+        <h2 class="text-white text-8 md:text-[40px] font-normal leading-none text-center">Return & Replace Policy</h2>
+        <ul
+            class="flex items-center justify-center gap-[10px] text-base md:text-lg leading-none font-normal text-white mt-3 md:mt-4">
+            <li><a [routerLink]="'/'">Home</a></li>
+            <li>/</li>
+            <li class="text-primary">Return & Replace Policy</li>
         </ul>
     </div>
 </div>

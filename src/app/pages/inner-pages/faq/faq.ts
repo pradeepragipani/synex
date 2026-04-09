@@ -39,7 +39,7 @@ export class Faq {
     this.apiService.postData('getfaqs', { "hflag": "S" }).subscribe({
       next: (data) => {
         this.isLoading = false;
-        this.apiData = data.response[0];
+        this.apiData = data.response;
         this.cdr.detectChanges();
       },
       error: (error) => {
