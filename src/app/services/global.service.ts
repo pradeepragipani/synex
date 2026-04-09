@@ -36,12 +36,14 @@ export class GlobalService {
         localStorage.removeItem('defaultAddress');
         localStorage.removeItem('selectedAddress');
         this.loggedInUser$.next(null);
-        window.location.href = '/';
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 1500);
         setTimeout(() => {
             localStorage.removeItem('cartItems');
             this.cartItems$.next([]);
             window.location.reload();
-        }, 500);
+        }, 2500);
     }
 
     getCurrentUser() {

@@ -42,9 +42,11 @@ export class QrPaymentComponent implements OnInit, OnDestroy {
         setTimeout(() => {
           this.checkTransactionStatus();
         }, 60000);
-      // } else {
-      //   this.globalService.error("Invalid Payment QR Code");
-      //   this.router.navigate(['/']);
+      } else {
+        this.globalService.error("Unable to process the payment");
+        setTimeout(() => {
+          this.router.navigate(['/']);
+        }, 1500);
       }
     });
   }

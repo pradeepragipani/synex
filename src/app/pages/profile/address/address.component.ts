@@ -83,6 +83,8 @@ export class AddressComponent {
         } else if (response.code === 5) {
           this.globalService.error("Session expired. Please login again.");
           this.globalService.logout();
+        } else {
+          this.globalService.error(response.message || 'Unable to add address at this time.');
         }
       }, error: (error) => {
         this.isLoading = false;
@@ -173,6 +175,9 @@ export class AddressComponent {
         if (response.code === 0) {
           this.closeAddAddressPopup();
           this.getAddress();
+        } else if (response.code === 5) {
+          this.globalService.error("Session expired. Please login again.");
+          this.globalService.logout();
         } else {
           this.globalService.error(response.message || 'Unable to add address at this time.');
         }
