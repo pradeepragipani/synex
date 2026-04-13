@@ -22,7 +22,7 @@ import { FormsModule } from '@angular/forms';
 export class Faq {
 
   isLoading: boolean = false;
-  apiData: any;
+  apiData: any[] = [];
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -39,7 +39,7 @@ export class Faq {
     this.apiService.postData('getfaqs', { "hflag": "S" }).subscribe({
       next: (data) => {
         this.isLoading = false;
-        this.apiData = data.response;
+        this.apiData = data?.response || [];
         this.cdr.detectChanges();
       },
       error: (error) => {

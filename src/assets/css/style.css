@@ -8060,24 +8060,24 @@ img.mfp-img {
 }
 @-webkit-keyframes hv6_Banner {
   0% {
-    background-image: url("../img/home-v6/banner-01.png");
+    background-image: url("../img/custom/banner-01.png");
   }
   50% {
-    background-image: url("../img/home-v6/banner-02.png");
+    background-image: url("../img/custom/banner-02.png");
   }
   100% {
-    background-image: url("../img/home-v6/banner-03.png");
+    background-image: url("../img/custom/banner-03.png");
   }
 }
 @keyframes hv6_Banner {
   0% {
-    background-image: url("../img/home-v6/banner-01.png");
+    background-image: url("../img/custom/banner-01.png");
   }
   50% {
-    background-image: url("../img/home-v6/banner-02.png");
+    background-image: url("../img/custom/banner-02.png");
   }
   100% {
-    background-image: url("../img/home-v6/banner-03.png");
+    background-image: url("../img/custom/banner-03.png");
   }
 }
 .carousel-slider-one .owl-dots{
@@ -14012,7 +14012,7 @@ span.ui-slider-handle.ui-state-default.ui-corner-all{
   }
 }
 .hv6-banner {
-  background-image: url("../img/home-v6/banner-01.png");
+  background-image: url("../img/custom/banner-01.png");
   -webkit-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
