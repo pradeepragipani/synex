@@ -71,7 +71,7 @@
                 </div>
                 
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 lg:gap-x-7 gap-y-[30px] lg:gap-y-12" data-aos="fade-up" data-aos-delay="100">
-                    <div *ngFor="let item of tendingItems" [routerLink]="['/product-details',item.id]" class="show-cursor-pointer">
+                    <div *ngFor="let item of tendingItems" (click)="toProductDetails(item)" class="show-cursor-pointer">
                         <div class="group relative overflow-hidden">
                             <img class="w-full transform duration-300 group-hover:scale-110" [src]="item.imgpath" alt="product-card">
                             <!-- <div class="absolute w-full h-full top-0  bg-white dark:bg-title bg-opacity-70 dark:bg-opacity-70 flex items-end p-5 scale-110 opacity-0 duration-200 group-hover:scale-100 group-hover:opacity-100">

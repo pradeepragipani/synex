@@ -1,23 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NavbarOne } from "../../../components/navbar/navbar-one/navbar-one";
 import Aos from 'aos';
 import { servicesData } from '../../../data/index-three';
-import { productList } from '../../../data/data';
 import { BlogSix } from "../../../components/blogs/blog-six/blog-six";
 import { PartnerOne } from "../../../components/partner/partner-one/partner-one";
 import { FooterSix } from "../../../components/footer/footer-six/footer-six";
 import { ApiService } from '../../../services/api.service';
 import { FormsModule } from '@angular/forms';
-
-interface ProductList {
-  id: number;
-  image: string;
-  tag: string;
-  price: string;
-  name: string;
-}
 
 @Component({
   selector: 'app-index-six',
@@ -36,13 +27,13 @@ interface ProductList {
 export class IndexSix {
 
   servicesData = servicesData
-  productList: ProductList[] = productList
 
   tendingItems: any[] = [];
   categories: any[] = [];
 
   constructor(
     private cdr: ChangeDetectorRef,
+    private router: Router,
     private apiService: ApiService
   ) { }
 
@@ -74,5 +65,11 @@ export class IndexSix {
         console.error('Error loading API data', error);
       }
     });
+  }
+
+  toProductDetails(item: any): void {
+    localStorage.setItem('productData', JSON.stringify(item));
+    localStorage.setItem('relatedProducts', JSON.stringify(this.tendingItems.slice(0, 4)));
+    this.router.navigate(['/product-details', item.id]);
   }
 }

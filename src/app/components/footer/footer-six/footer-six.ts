@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { footerLink, footerLink1, footerLink2, footerLink3, footerLink4 } from '../../../data/nav-data';
+import { footerLink } from '../../../data/nav-data';
 import { RouterLink } from '@angular/router';
 import { ApiService } from '../../../services/api.service';
 import { FormsModule } from '@angular/forms';
@@ -22,10 +22,6 @@ export class FooterSix {
   apiData?: any;
 
   footerLink = footerLink;
-  footerLink1 = footerLink1
-  footerLink2 = footerLink2
-  footerLink3 = footerLink3
-  footerLink4 = footerLink4
 
   constructor(
     private cdr: ChangeDetectorRef,
@@ -33,14 +29,21 @@ export class FooterSix {
   ) { }
 
   ngOnInit(): void {
-    this.year = new Date().getFullYear()
-    this.loadApiData();
+    this.year = new Date().getFullYear();
+    let address = sessionStorage.getItem('ofc-address');
+    if (address) {
+      this.apiData = JSON.parse(address);
+      this.cdr.detectChanges();
+    } else {
+      this.loadApiData();
+    }
   }
 
   loadApiData(): void {
     this.apiService.postData('getmasterdata', { "orgid": "0", "hflag": "S" }).subscribe({
       next: (data) => {
         this.apiData = data.response[0];
+        sessionStorage.setItem('ofc-address', JSON.stringify(this.apiData));
         this.cdr.detectChanges();
       },
       error: (error) => {
